@@ -1,0 +1,90 @@
+<!doctype html><html lang="ru"><head>
+<meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>V2 Журнальная — Гонки на плотах / InWave</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="base.css">
+<style>
+.ed-head{padding:70px 0 0}
+.ed-head h1{max-width:16ch;margin-top:16px}
+.ed-byline{display:flex;gap:34px;flex-wrap:wrap;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  margin-top:38px;padding:20px 0;font-family:var(--disp);font-weight:700}
+.ed-byline b{display:block;font-size:13px;color:var(--gray);text-transform:uppercase;letter-spacing:.1em;font-weight:800}
+.ed-byline span{font-size:20px}
+.bleed{border-radius:var(--radius);overflow:hidden}
+.read{max-width:760px;margin:0 auto}
+.read p{font-size:22px;line-height:1.62}
+.dropcap::first-letter{font-family:var(--disp);font-weight:800;font-size:82px;float:left;line-height:.8;margin:8px 14px 0 0;color:var(--green)}
+.pull{font-family:var(--disp);font-weight:800;font-size:clamp(30px,3.4vw,46px);line-height:1.08;color:var(--ink);
+  border-left:6px solid var(--green);padding-left:26px;margin:14px 0}
+.cap{font-size:15px;color:var(--gray);margin-top:12px}
+.vrow{display:grid;grid-template-columns:2fr 1fr;gap:20px;align-items:start}
+.vrow .col{display:grid;gap:20px}
+.mini .vframe{aspect-ratio:4/3}
+.tasktag{display:inline-block;background:var(--ink);color:#fff;font-family:var(--disp);font-weight:800;padding:8px 18px;border-radius:100px;font-size:15px}
+@media(max-width:760px){.vrow{grid-template-columns:1fr}}
+</style></head>
+<body data-variant="2">
+<div data-header="light"></div>
+
+<article>
+  <header class="ed-head"><div class="container">
+    <span class="eyebrow">Кейс · Тимбилдинг</span>
+    <h1 id="h1"></h1>
+    <div class="ed-byline" id="by"></div>
+  </div></header>
+
+  <section class="sec" style="padding-block:56px"><div class="container">
+    <div class="vframe bleed" role="button" style="aspect-ratio:16/8">
+      <video preload="none" poster="video/raft-hero.jpg" data-src="video/raft-hero.mp4"></video>
+      <span class="vtag">Видео дня</span><span class="vlabel">Полное видео тимбилдинга</span>
+      <span class="play"><span></span></span></div>
+    <div class="cap">InWave · Гонки на плотах · более 100 участников</div>
+  </div></section>
+
+  <section class="read" style="padding:0 40px"><div id="lead"></div></section>
+
+  <section class="sec"><div class="container"><div class="vrow" id="vrow"></div></div></section>
+
+  <section class="read" style="padding:0 40px">
+    <p class="tasktag" id="task"></p>
+    <div id="story2"></div>
+    <div class="pull" id="pull"></div>
+  </section>
+
+  <section class="sec"><div class="container">
+    <h2 style="margin-bottom:34px">Что сделали</h2>
+    <div id="done" style="display:grid;grid-template-columns:repeat(3,1fr);gap:22px"></div>
+  </div></section>
+
+  <section class="sec" style="padding-top:0"><div class="container" style="background:var(--paper);border-radius:var(--radius);padding:64px">
+    <h2 style="margin-bottom:30px">Результат</h2>
+    <div id="res" style="display:grid;grid-template-columns:1fr 1fr;gap:40px"></div>
+    <div style="margin-top:44px"><a class="btn btn-green" href="#">Обсудить свой тимбилдинг</a></div>
+  </div></section>
+</article>
+
+<div data-footer></div>
+<script src="data.js"></script>
+<script>
+const c=window.CASE;
+h1.textContent=c.program+' для '+c.client;
+by.innerHTML=[['Клиент',c.client],['Программа',c.program],['Участников',c.people],['Сезон','Лето'],['Результат',c.metric]]
+  .map(([a,b])=>`<div><b>${a}</b><span>${b}</span></div>`).join('');
+lead.innerHTML=`<p class="dropcap">${c.lead}</p>`;
+vrow.innerHTML=`<div class="vframe" role="button" style="aspect-ratio:16/10">
+    <video preload="none" poster="${c.videos[4].poster}" data-src="${c.videos[4].src}"></video>
+    <span class="vlabel">${c.videos[4].title}</span><span class="play"><span></span></span></div>
+  <div class="col mini">
+    ${[1,2].map(i=>`<div class="vframe" role="button"><video preload="none" poster="${c.videos[i].poster}" data-src="${c.videos[i].src}"></video><span class="vlabel">${c.videos[i].title}</span><span class="play"><span></span></span></div>`).join('')}
+  </div>`;
+task.textContent='Задача: '+c.task;
+story2.innerHTML=c.story.map(s=>`<p>${s}</p>`).join('');
+pull.textContent='«Кто самый быстрый и мокрый» стало общим воспоминанием на весь год.';
+done.innerHTML=c.done.map(d=>`<div style="background:var(--paper);border-radius:var(--radius);padding:30px">
+  <h3 style="margin-bottom:12px">${d.t}</h3><p style="margin:0;font-size:18px;color:var(--gray)">${d.d}</p></div>`).join('');
+res.innerHTML=c.result.map((r,i)=>`<div>${i===1?'<div class="statnum">+30%</div>':'<div class="statnum">100%</div>'}
+  <p style="margin-top:14px;font-size:21px">${r}</p></div>`).join('');
+</script>
+<script src="common.js"></script>
+</body></html>

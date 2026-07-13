@@ -1,0 +1,56 @@
+<!doctype html><html lang="ru"><head>
+<meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>B4 Журнальный список — Все кейсы</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="base.css">
+<style>
+.head{padding-top:70px}
+.rows{border-top:1px solid var(--line);margin-top:44px}
+.row{display:grid;grid-template-columns:64px 1.4fr 1fr auto;gap:28px;align-items:center;
+  padding:30px 8px;border-bottom:1px solid var(--line);position:relative;cursor:pointer;transition:.2s}
+.row:hover{padding-left:24px;background:linear-gradient(90deg,rgba(10,186,89,.05),transparent)}
+.row .idx{font-family:var(--disp);font-weight:800;color:var(--gray-2);font-size:22px}
+.row h3{font-size:clamp(26px,2.6vw,40px);transition:.2s}
+.row:hover h3{color:var(--green)}
+.row .sub{color:var(--gray);font-family:var(--disp);font-weight:700;font-size:16px;margin-top:4px}
+.row .met{font-family:var(--disp);font-weight:800;color:var(--ink)}
+.row .met b{color:var(--green);font-size:24px;display:block}
+.row .go{width:52px;height:52px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center;font-size:20px;transition:.2s}
+.row:hover .go{background:var(--green);border-color:var(--green);color:#fff}
+.preview{position:fixed;pointer-events:none;width:340px;aspect-ratio:16/10;border-radius:16px;overflow:hidden;
+  box-shadow:0 30px 70px rgba(0,0,0,.35);opacity:0;transform:scale(.9);transition:.18s;z-index:80}
+.preview.on{opacity:1;transform:scale(1)}
+.preview img{width:100%;height:100%;object-fit:cover}
+@media(max-width:760px){.row{grid-template-columns:40px 1fr auto;gap:16px}.row .met{display:none}.preview{display:none}}
+</style></head>
+<body data-variant="B4">
+<div data-header="light"></div>
+
+<section class="head"><div class="container">
+  <span class="eyebrow">Портфолио · 7 кейсов</span>
+  <h1 style="margin-top:12px">Кейсы Каталиста</h1>
+  <p class="lead" style="max-width:56ch">Наведи на строку, чтобы увидеть превью. Каждый кейс с видео и результатом.</p>
+  <div class="rows" id="rows"></div>
+</div></section>
+<div class="preview" id="pv"><img id="pvimg" alt=""></div>
+
+<div data-footer></div>
+<script src="data.js"></script>
+<script>
+rows.innerHTML=window.CASES.map((k,i)=>`
+  <a class="row" href="${k.real?'case-cinema.html':'#'}" data-poster="${k.poster}">
+    <div class="idx">0${i+1}</div>
+    <div><h3>${k.program}</h3><div class="sub">${k.tag} · ${k.client}</div></div>
+    <div class="met"><b>${k.metric.split(' ')[0]}</b>${k.metric.split(' ').slice(1).join(' ')} · ${k.people}</div>
+    <div class="go">→</div>
+  </a>`).join('');
+const pv=document.getElementById('pv'),pvi=document.getElementById('pvimg');
+document.querySelectorAll('.row').forEach(r=>{
+  r.addEventListener('mousemove',e=>{pv.style.left=(e.clientX+26)+'px';pv.style.top=(e.clientY-100)+'px';});
+  r.addEventListener('mouseenter',()=>{pvi.src=r.dataset.poster;pv.classList.add('on');});
+  r.addEventListener('mouseleave',()=>pv.classList.remove('on'));
+});
+</script>
+<script src="common.js"></script>
+</body></html>

@@ -1,0 +1,90 @@
+<!doctype html><html lang="ru"><head>
+<meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Кейсы Каталиста : варианты · Гонки на плотах / InWave</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="base.css">
+<style>
+body{background:var(--paper)}
+.hero{padding:64px 0 20px}
+.hero h1{margin:14px 0 16px;max-width:20ch}
+.note{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px 28px;margin-top:24px;max-width:900px}
+.note b{color:var(--green)}
+.grp{margin-top:56px}
+.grp h2{margin-bottom:6px}
+.grp p.muted{margin-bottom:26px}
+.vgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.vcard{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:.2s;display:block}
+.vcard:hover{box-shadow:0 20px 50px rgba(0,0,0,.12);transform:translateY(-4px)}
+.vcard .thumb{aspect-ratio:16/10;position:relative;overflow:hidden;background:#111}
+.vcard .thumb img{width:100%;height:100%;object-fit:cover;opacity:.9}
+.vcard .num{position:absolute;top:12px;left:12px;background:var(--green);color:#fff;font-family:var(--disp);font-weight:800;
+  padding:6px 14px;border-radius:100px;font-size:14px;z-index:2}
+.vcard .vb{padding:20px 22px}
+.vcard h3{font-size:22px;margin-bottom:6px}
+.vcard p{margin:0;color:var(--gray);font-size:16px}
+.vcard .open{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-family:var(--disp);font-weight:800;color:var(--green)}
+@media(max-width:900px){.vgrid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.vgrid{grid-template-columns:1fr}}
+</style></head>
+<body>
+<header class="hdr"><div class="container">
+  <img class="logo" src="assets/logo-black.png" alt="Каталист" style="height:38px">
+  <span style="font-family:var(--disp);font-weight:800;color:var(--gray)">Витрина вариантов</span>
+</div></header>
+
+<section class="hero"><div class="container">
+  <span class="eyebrow">Первый кейс · Гонки на плотах для InWave</span>
+  <h1>Как может выглядеть блок кейсов</h1>
+  <p class="lead" style="max-width:64ch">6 концепций страницы кейса + 6 концепций блока «Все кейсы». Кликай карточку, чтобы открыть живой вариант. В каждом варианте справа внизу : «🚀 Опубликовать V‹N›» и «Скрыть».</p>
+  <div class="note">
+    <p style="margin:0 0 8px"><b>Кейс построен вокруг видео</b> (не фото) : как ты просила. Заложено <b>2-4 видео на кейс</b>: здесь главное видео плотов + 4 нарезанных клипа с площадки.</p>
+    <p style="margin:0"><b>Реальный контент только у InWave</b> (твой текст, +30%, папка «Плоты»). Остальные карточки в блоке «Все кейсы» : реальные программы Каталиста (Фудтраки, Мегаполис, WOW Пицца…) для примера раскладки, без выдуманных клиентов.</p>
+  </div>
+</div></section>
+
+<section class="sec" style="padding-top:56px"><div class="container">
+  <div class="grp">
+    <h2>Страница кейса : 6 концепций</h2>
+    <p class="muted">Одна страница одного кейса. Разные способы подать видео и историю.</p>
+    <div class="vgrid" id="pages"></div>
+  </div>
+  <div class="grp">
+    <h2>Блок «Все кейсы» : 6 концепций</h2>
+    <p class="muted">Витрина всех кейсов на сайте. Карточки ведут на страницу кейса.</p>
+    <div class="vgrid" id="blocks"></div>
+  </div>
+</div></section>
+
+<footer class="ftr" style="margin-top:60px"><div class="container">
+  <div class="fbot" style="border:0;margin:0;padding:0"><span>© Каталист, 2026 · внутренняя витрина</span><span>Гонки на плотах / InWave</span></div>
+</div></footer>
+
+<script>
+const pages=[
+ ['case-cinema.html','Кинематографичная','Тёмная. Полноэкранное hero-видео, крупный заголовок, драматичная подача.','video/raft-hero.jpg'],
+ ['case-editorial.html','Журнальная','Светлая. Кейс как статья-репортаж, буквица, крупная типографика, видео в тексте.','video/raft-clip4.jpg'],
+ ['case-split.html','Split-sticky','Левая липкая колонка (видео + цифры), справа скролл по разделам. SaaS-стиль.','video/raft-clip2.jpg'],
+ ['case-timeline.html','Таймлайн дня','Хронология: подготовка → сборка под дождём → гонка → финиш. Клип на каждом шаге.','video/raft-clip3.jpg'],
+ ['case-result.html','Результат вперёд','B2B. Сверху цифры (+30%, 100+), ниже доказательство видео. «Что получил клиент».','img/plot-22.webp'],
+ ['case-mosaic.html','Видео-мозаика','Тёмная. Бенто из всех 5 видео как главный герой, текст компактными блоками.','video/raft-clip1.jpg']
+];
+const blocks=[
+ ['cases-grid.html','Крупные карточки','Сетка 2 колонки, большие превью-видео (оживают при наведении).','video/raft-hero.jpg'],
+ ['cases-featured.html','Featured + сетка','Один большой избранный кейс сверху, ниже сетка остальных.','cases/foodtrucks.jpg'],
+ ['cases-carousel.html','Карусель','Горизонтальная лента кейсов со стрелками и свайпом.','cases/megapolis.jpg'],
+ ['cases-list.html','Журнальный список','Крупные строки, наведение показывает превью сбоку. Минимализм.','cases/neuro.jpg'],
+ ['cases-mosaic.html','Мозаика','Бенто разного размера, видео играет при наведении на плитку.','cases/wowpizza.jpg'],
+ ['cases-filter.html','С фильтрами','Чипы по формату (Тимбилдинг / Фестиваль / AI…), живая фильтрация.','cases/goldberg.jpg']
+];
+function render(arr,el,prefix){
+  document.getElementById(el).innerHTML=arr.map((v,i)=>`
+    <a class="vcard" href="${v[0]}">
+      <div class="thumb"><span class="num">${prefix}${i+1}</span><img src="${v[3]}" alt=""></div>
+      <div class="vb"><h3>${v[1]}</h3><p>${v[2]}</p><span class="open">Открыть вариант →</span></div>
+    </a>`).join('');
+}
+render(pages,'pages','V');
+render(blocks,'blocks','B');
+</script>
+</body></html>

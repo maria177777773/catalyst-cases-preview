@@ -1,0 +1,71 @@
+<!doctype html><html lang="ru"><head>
+<meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>V3 Split-sticky — Гонки на плотах / InWave</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="base.css">
+<style>
+.split{display:grid;grid-template-columns:0.92fr 1.08fr;gap:64px;align-items:start}
+.left{position:sticky;top:104px}
+.left .vframe{aspect-ratio:4/5;max-height:460px}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:24px}
+.fact{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:20px}
+.fact .statnum{font-size:38px}
+.fact small{color:var(--gray);font-size:14px;display:block;margin-top:4px}
+.block{padding-bottom:56px;margin-bottom:56px;border-bottom:1px solid var(--line)}
+.block:last-child{border:0}
+.block h2{margin-bottom:18px}
+.donen{counter-reset:d}
+.donen .it{display:flex;gap:20px;padding:18px 0;border-top:1px solid var(--line)}
+.donen .it::before{counter-increment:d;content:'0' counter(d);font-family:var(--disp);font-weight:800;font-size:26px;color:var(--green);min-width:44px}
+.rescard{background:var(--ink);color:#fff;border-radius:var(--radius);padding:40px;margin-top:14px}
+.rescard .statnum{color:var(--green)}
+@media(max-width:900px){.split{grid-template-columns:1fr;gap:36px}.left{position:static}.left .vframe{aspect-ratio:16/10;max-height:none}}
+</style></head>
+<body data-variant="3">
+<div data-header="light"></div>
+
+<section class="sec" style="padding-top:64px"><div class="container">
+  <span class="eyebrow">Кейс</span>
+  <h1 style="margin:14px 0 10px" id="h1"></h1>
+  <p class="lead" style="max-width:60ch" id="tag"></p>
+</div></section>
+
+<section style="padding-bottom:var(--sec)"><div class="container">
+  <div class="split">
+    <aside class="left">
+      <div class="vframe" role="button">
+        <video preload="none" poster="video/raft-hero.jpg" data-src="video/raft-hero.mp4"></video>
+        <span class="vtag">Видео дня</span><span class="play"><span></span></span></div>
+      <div class="facts" id="facts"></div>
+    </aside>
+    <div class="right" id="right"></div>
+  </div>
+</div></div></section>
+
+<div data-footer></div>
+<script src="data.js"></script>
+<script>
+const c=window.CASE;
+h1.textContent=c.program+' · '+c.client;
+tag.textContent=c.tagline;
+facts.innerHTML=[[c.people,c.peopleLabel],[c.metric,'коммуникация'],['1','ливень, но 0 отмен'],['5','видео']]
+  .map(([a,b])=>`<div class="fact"><div class="statnum">${a}</div><small>${b}</small></div>`).join('');
+right.innerHTML=`
+  <div class="block"><h2>О программе</h2><p class="lead">${c.lead}</p>${c.story.map(s=>`<p>${s}</p>`).join('')}</div>
+  <div class="block"><h2>Задача клиента</h2><p class="lead">${c.task}</p></div>
+  <div class="block"><h2>Что мы сделали</h2><div class="donen">
+    ${c.done.map(d=>`<div class="it"><div><h3 style="font-size:22px;margin-bottom:4px">${d.t}</h3><p style="margin:0;color:var(--gray)">${d.d}</p></div></div>`).join('')}
+  </div></div>
+  <div class="block"><h2>Ещё видео с площадки</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px">
+    ${[1,2,3,4].map(i=>`<div class="vframe" role="button" style="aspect-ratio:16/10"><video preload="none" poster="${c.videos[i].poster}" data-src="${c.videos[i].src}"></video><span class="vlabel" style="font-size:16px">${c.videos[i].title}</span><span class="play"><span style="width:56px;height:56px"></span></span></div>`).join('')}
+    </div></div>
+  <div class="block"><h2>Результат</h2>
+    <div class="rescard"><div class="statnum">${c.metric}</div><p style="margin:12px 0 0;font-size:22px">${c.metricLabel}</p></div>
+    <p style="margin-top:20px;font-size:21px">${c.result[0]}</p>
+    <a class="btn btn-green" href="#" style="margin-top:14px">Хочу так же для команды</a>
+  </div>`;
+</script>
+<script src="common.js"></script>
+</body></html>

@@ -1,0 +1,61 @@
+<!doctype html><html lang="ru"><head>
+<meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>B2 Featured + сетка — Все кейсы</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="base.css">
+<style>
+.head{padding-top:70px}
+.feat{display:grid;grid-template-columns:1.25fr 1fr;gap:36px;align-items:center;
+  background:var(--ink);color:#fff;border-radius:var(--radius);overflow:hidden;padding:0}
+.feat .vframe{aspect-ratio:16/11;border-radius:0;height:100%}
+.feat .fbody{padding:48px 48px 48px 8px}
+.feat h2{color:#fff;margin:12px 0 16px}
+.feat .fstats{display:flex;gap:34px;margin:22px 0}
+.feat .statnum{font-size:44px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:36px}
+.mini{border-radius:16px;overflow:hidden;border:1px solid var(--line);cursor:pointer;transition:.2s}
+.mini:hover{box-shadow:0 18px 44px rgba(0,0,0,.1);transform:translateY(-3px)}
+.mini .vframe{aspect-ratio:16/10;border-radius:0}
+.mini .mb{padding:18px 20px}
+.mini h3{font-size:21px}
+.mini .m{color:var(--gray);font-family:var(--disp);font-weight:700;font-size:15px;margin-top:8px}
+@media(max-width:900px){.feat{grid-template-columns:1fr}.feat .fbody{padding:32px}.grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.grid{grid-template-columns:1fr}}
+</style></head>
+<body data-variant="B2">
+<div data-header="light"></div>
+
+<section class="head"><div class="container">
+  <span class="eyebrow">Портфолио</span>
+  <h1 style="margin:12px 0 40px">Кейсы Каталиста</h1>
+  <div class="feat" id="feat"></div>
+  <div class="grid" id="grid"></div>
+</div></section>
+
+<div data-footer></div>
+<script src="data.js"></script>
+<script>
+const all=window.CASES, f=all[0], rest=all.slice(1);
+feat.innerHTML=`
+  <div class="vframe" data-hover role="button"><video preload="none" poster="${f.poster}" data-src="${f.video}"></video>
+    <span class="vtag">Полный кейс · видео</span><span class="play"><span></span></span></div>
+  <div class="fbody">
+    <span class="eyebrow">${f.tag} · ${f.client}</span>
+    <h2>${f.program}</h2>
+    <p style="color:#cfd2d6;max-width:42ch">Более 100 человек, ливень и плоты. Коммуникация между отделами выросла на 30%.</p>
+    <div class="fstats">
+      <div><div class="statnum">${f.metric.split(' ')[0]}</div><small style="color:#9aa0a6">коммуникация</small></div>
+      <div><div class="statnum">100+</div><small style="color:#9aa0a6">участников</small></div>
+    </div>
+    <a class="btn btn-green" href="case-cinema.html">Смотреть кейс</a>
+  </div>`;
+grid.innerHTML=rest.map(k=>`
+  <div class="mini">
+    <div class="vframe" data-hover role="button"><video preload="none" poster="${k.poster}" data-src="${k.video}"></video>
+      <span class="vtag">${k.tag}</span><span class="play"><span style="width:56px;height:56px"></span></span></div>
+    <div class="mb"><h3>${k.program}</h3><div class="m">${k.metric} · ${k.people}</div></div>
+  </div>`).join('');
+</script>
+<script src="common.js"></script>
+</body></html>

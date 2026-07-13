@@ -1,0 +1,74 @@
+<!doctype html><html lang="ru"><head>
+<meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>V4 Таймлайн — Гонки на плотах / InWave</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="base.css">
+<style>
+.hero2{display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:center;padding-top:64px}
+.hero2 .vframe{aspect-ratio:4/3}
+.hero2 h1{margin:12px 0 16px}
+.tl{position:relative;max-width:1000px;margin:0 auto}
+.tl::before{content:'';position:absolute;left:34px;top:10px;bottom:10px;width:3px;background:linear-gradient(var(--green),var(--line))}
+.step{position:relative;padding-left:96px;margin-bottom:56px}
+.step .dot{position:absolute;left:20px;top:4px;width:32px;height:32px;border-radius:50%;background:var(--green);
+  border:5px solid #fff;box-shadow:0 0 0 2px var(--green)}
+.step .n{font-family:var(--disp);font-weight:800;color:var(--green);font-size:15px;letter-spacing:.1em;text-transform:uppercase}
+.step h3{margin:6px 0 14px;font-size:28px}
+.step .vframe{aspect-ratio:16/9;margin-top:18px}
+.big{background:var(--green);color:#04381f;border-radius:var(--radius);padding:60px;text-align:center;color:#fff;margin-top:20px}
+.big .statnum{color:#fff}
+@media(max-width:820px){.hero2{grid-template-columns:1fr}}
+</style></head>
+<body data-variant="4">
+<div data-header="light"></div>
+
+<section><div class="container">
+  <div class="hero2">
+    <div>
+      <span class="eyebrow" id="eb"></span>
+      <h1 id="h1"></h1>
+      <p class="lead" id="tag"></p>
+      <div class="chip" style="margin-top:20px" id="chip"></div>
+    </div>
+    <div class="vframe" role="button">
+      <video preload="none" poster="video/raft-hero.jpg" data-src="video/raft-hero.mp4"></video>
+      <span class="vtag">Видео дня</span><span class="play"><span></span></span></div>
+  </div>
+</div></section>
+
+<section class="sec"><div class="container">
+  <h2 style="text-align:center;margin-bottom:60px">Как прошёл день</h2>
+  <div class="tl" id="tl"></div>
+</div></section>
+
+<section class="sec" style="padding-top:0"><div class="container">
+  <div class="big" id="big"></div>
+  <div style="text-align:center;margin-top:44px"><a class="btn btn-green" href="#">Хочу такой же день для команды</a></div>
+</div></section>
+
+<div data-footer></div>
+<script src="data.js"></script>
+<script>
+const c=window.CASE;
+eb.textContent=c.season+' · '+c.client;
+h1.textContent=c.program;
+tag.textContent=c.tagline;
+chip.textContent='☔ '+c.people+' участников · погода не лётная, но 0 отмен';
+const steps=[
+ {n:'Шаг 1 · Утро',t:'Старт и знакомство',d:'Более 100 человек, знакомство всех коллег между собой прямо на площадке у воды.',v:c.videos[1]},
+ {n:'Шаг 2 · Дождь',t:'Сборка плотов под ливнем',d:'Под дождём собирали плоты из специально изготовленных материалов, пели и танцевали. Не успел собрать плот, проиграл.',v:c.videos[2]},
+ {n:'Шаг 3 · Азарт',t:'Слаженная работа на время',d:'Командный дух и поддержка своей команды. Всё решала скорость и коммуникация между отделами.',v:c.videos[3]},
+ {n:'Шаг 4 · Финиш',t:'Гонка на воде',d:'Чтобы в конце понять, кто самый быстрый и мокрый. Все познакомились и стали друзьями.',v:c.videos[4]}
+];
+tl.innerHTML=steps.map(s=>`<div class="step"><div class="dot"></div>
+  <div class="n">${s.n}</div><h3>${s.t}</h3><p style="max-width:60ch">${s.d}</p>
+  <div class="vframe" role="button"><video preload="none" poster="${s.v.poster}" data-src="${s.v.src}"></video>
+  <span class="vlabel">${s.v.title}</span><span class="play"><span></span></span></div></div>`).join('');
+big.innerHTML=`<div style="font-family:var(--disp);font-weight:800;text-transform:uppercase;letter-spacing:.12em;font-size:14px;opacity:.85">Результат</div>
+  <div class="statnum" style="margin:10px 0">${c.metric}</div>
+  <h2 style="color:#fff">${c.metricLabel}</h2>
+  <p style="max-width:50ch;margin:16px auto 0;font-size:21px;opacity:.95">${c.result[0]}</p>`;
+</script>
+<script src="common.js"></script>
+</body></html>
