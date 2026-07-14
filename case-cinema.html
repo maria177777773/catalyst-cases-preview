@@ -77,6 +77,7 @@ body{background:#111214;color:#e9eaec}
 .sinfo .ihint{color:#fff;font-size:15px;margin-top:6px;line-height:1.35}
 .sinfo .ibars{display:flex;align-items:flex-end;gap:6px;height:34px;margin-top:12px;opacity:.85}
 .sinfo .ibars i{flex:1;background:var(--green);border-radius:3px}
+.sbubble{position:absolute;top:34px;right:34px;z-index:4;background:var(--green);color:#04140b;font-family:var(--disp);font-weight:800;font-size:17px;padding:16px 22px;border-radius:16px;max-width:300px;line-height:1.25;box-shadow:0 10px 30px rgba(0,0,0,.3)}
 .stage-desc{max-width:1400px;margin:0 auto;padding:30px 40px 0}
 .stage-desc p{font-size:21px;line-height:1.58;color:#c7cacd;max-width:64ch;margin:0}
 .stage-desc ul{margin:16px 0 0;padding:0;list-style:none;display:flex;gap:10px;flex-wrap:wrap}
@@ -147,14 +148,14 @@ body{background:#111214;color:#e9eaec}
     <div class="cine-meta">
       <div><div class="statnum">100+</div><small>сотрудников InWave</small></div>
       <div><div class="statnum">+30%</div><small>коммуникация между отделами</small></div>
-      <div><div class="statnum">5</div><small>этапов дня на видео</small></div>
+      <div><div class="statnum">10+</div><small>плотов за 3 часа</small></div>
     </div>
   </div></div>
 </section>
 
 <!-- ЛИД -->
 <section class="sec"><div class="container narr">
-  <p class="lead">Более 100 сотрудников InWave приехали на одну из самых летних и азартных программ Каталиста. Для нашей команды это была очередная программа. А для InWave это было настоящим испытанием на стойкость, изобретательность и скорость.</p>
+  <p class="lead">Более 100 сотрудников InWave приехали на одну из самых летних и азартных программ Каталист. Для нашей команды это была очередная программа. А для InWave это было настоящим испытанием на стойкость, изобретательность и скорость.</p>
   <p>А погода в этот день решила устроить участникам дополнительное испытание: начался сильный ливень. Но дождь не остановил команды. Наоборот, он сделал происходящее ещё эмоциональнее. Коллеги собирали плоты, пели, танцевали, поддерживали друг друга и продолжали борьбу за победу.</p>
 </div></section>
 
@@ -165,7 +166,7 @@ body{background:#111214;color:#e9eaec}
     <div class="fact"><div class="fn">100+</div><div class="fl">сотрудников на площадке</div></div>
     <div class="fact"><div class="fn">2</div><div class="fl">участника выдерживает каждый плот</div></div>
     <div class="fact"><div class="fn">4</div><div class="fl">материала: трубы, пенопласт, дерево, пластик</div></div>
-    <div class="fact"><div class="fn">1</div><div class="fl">водная дистанция, гонка на время</div></div>
+    <div class="fact"><div class="fn">10+</div><div class="fl">плотов построено за 3 часа</div></div>
     <div class="fact"><div class="fn">0</div><div class="fl">отмен, несмотря на ливень</div></div>
     <div class="fact"><div class="fn">+30%</div><div class="fl">рост коммуникации между отделами</div></div>
   </div>
@@ -177,12 +178,6 @@ body{background:#111214;color:#e9eaec}
   <p>Сплотить коллектив InWave и улучшить коммуникацию между отделами. В обычной рабочей среде сотрудники разных направлений не всегда успевают познакомиться и почувствовать себя одной командой. Поэтому мы создали ситуацию, в которой общий результат зависел от каждого: нужно было быстро договориться, распределить роли, услышать коллег и успеть собрать конструкцию в ограниченное время.</p>
 </div></div></section>
 
-<!-- ЗАГОЛОВОК ЭТАПОВ -->
-<section class="sec" style="padding-bottom:40px"><div class="container">
-  <span class="eyebrow" style="display:block;margin-bottom:14px">Как проходила программа</span>
-  <h2 style="color:#fff;max-width:20ch">Пять этапов одного дождливого дня</h2>
-</div></section>
-
 <!-- КИНЕМАТОГРАФИЧЕСКИЕ БЛОКИ ЭТАПОВ -->
 <div id="stages"></div>
 
@@ -191,18 +186,6 @@ body{background:#111214;color:#e9eaec}
   <span class="eyebrow" style="display:block;margin-bottom:14px">Что удалось развить</span>
   <h2 style="color:#fff;margin-bottom:36px;max-width:20ch">Шесть командных навыков за один день</h2>
   <div class="develop" id="develop"></div>
-</div></section>
-
-<!-- ПОЛНОЕ ВИДЕО -->
-<section class="sec" style="padding-top:0"><div class="container">
-  <span class="eyebrow" style="display:block;margin-bottom:14px">Полное видео тимбилдинга</span>
-  <h2 style="color:#fff;margin-bottom:28px">Как прошёл день целиком</h2>
-  <div class="fullvid vframe" role="button">
-    <video preload="none" poster="video/raft-hero.jpg" data-src="video/raft-hero.mp4"></video>
-    <div class="fv-veil"></div>
-    <span class="play"><span></span></span>
-    <span class="fv-label">Гонки на плотах · InWave · более 100 участников</span>
-  </div>
 </div></section>
 
 <!-- РЕЗУЛЬТАТ -->
@@ -252,38 +235,28 @@ body{background:#111214;color:#e9eaec}
 document.getElementById('met').innerHTML=`<div class="statnum">+30%</div>
   <h2>Так вырос уровень организации рабочих процессов и передачи информации между отделами</h2>`;
 
-/* 5 кинематографических блоков этапов (полный текст программы) */
-const stages=[
- {n:'Этап 1',t:'Старт',video:'video/raft-clip1.mp4',poster:'video/raft-clip1.jpg',
-  d:'Более 100 сотрудников приехали на площадку у воды. После инструктажа участников разделили на команды, и каждая получила свой комплект материалов и инструментов для строительства плота.',
-  tags:['Инструктаж','Деление на команды','Комплект материалов'], ihint:'100+ участников · команды-экипажи'},
- {n:'Этап 2',t:'Подготовка',img:'img/plot-01.webp',
-  d:'Плот собирается из труб, пенопласта, дерева и пластика, и должен выдержать двух участников на водной дистанции. Тут же проявились командные роли: кто-то отвечал за расчёты и прочность, кто-то за сборку, кто-то за дизайн, а кто-то координировал всю команду.',
-  tags:['Расчёты и прочность','Сборка','Дизайн','Координация'], ihint:'плот держит 2 человек'},
- {n:'Этап 3',t:'Сборка плотов',video:'video/raft-clip2.mp4',poster:'video/raft-clip2.jpg',
-  d:'Времени было в обрез: не успела команда собрать плот, не вышла на старт. Заодно каждая команда придумывала образ своего плота: от ракеты до банана и английской телефонной будки.',
-  tags:['Ограниченное время','Образ плота','Ракета / банан / будка'], ihint:'успей собрать вовремя'},
- {n:'Этап 4',t:'Дождь не помеха',video:'video/raft-clip3.mp4',poster:'video/raft-clip3.jpg',
-  d:'В разгар дня пошёл сильный ливень. Материалы намокали, работать стало труднее, но участники не сдавались. Помогали друг другу, поддерживали команды, шутили, пели и танцевали прямо под дождём.',
-  tags:['Сильный ливень','0 отмен','Взаимопомощь'], ihint:'0 отмен под ливнём ☔'},
- {n:'Этап 5',t:'Гонка на воде',video:'video/raft-clip4.mp4',poster:'video/raft-clip4.jpg',
+/* 2 кинокадра: Сборка плотов + Гонки на плотах (без этапов, без звука, автоплей) */
+const blocks=[
+ {t:'Сборка плотов',video:'video/sborka.mp4',poster:'video/sborka.jpg',
+  bubble:'Построили более 10 плотов за 3 часа',
+  d:'Погода была абсолютно не лётная, пошёл сильный ливень. Материалы намокали, работать становилось труднее, но команды не сдавались: помогали друг другу, шутили, пели и танцевали прямо под дождём. За три часа под ливнём собрали больше десяти плотов из труб, пенопласта, дерева и пластика.',
+  tags:['Ограниченное время','Трубы, пенопласт, дерево, пластик','Дизайн плота']},
+ {t:'Гонки на плотах',video:'video/raft-clip4.mp4',poster:'video/raft-clip4.jpg',
+  ihint:'+30% коммуникация',
   d:'После презентаций плотов команды вышли на воду и проверили конструкции в гонке на время. Победителей определяли не только по скорости, но и по креативности командного решения. А все участники стали ближе друг к другу.',
-  tags:['Презентации','Гонка на время','Скорость + креатив'], ihint:'+30% коммуникация'}
+  tags:['Презентации','Гонка на время','Скорость + креатив']}
 ];
-document.getElementById('stages').innerHTML=stages.map(s=>{
-  const media = s.video
-    ? `<video preload="none" poster="${s.poster}" data-src="${s.video}"></video><span class="splay"></span>`
-    : `<img class="sposter" src="${s.img}" alt="">`;
+document.getElementById('stages').innerHTML=blocks.map(s=>{
+  const info = s.bubble
+    ? `<div class="sbubble">${s.bubble}</div>`
+    : `<div class="sinfo"><div class="il">Инфографика · placeholder</div><div class="ihint">${s.ihint}</div><div class="ibars"><i style="height:40%"></i><i style="height:70%"></i><i style="height:55%"></i><i style="height:100%"></i><i style="height:80%"></i></div></div>`;
   const tags = s.tags?`<ul>${s.tags.map(x=>`<li>${x}</li>`).join('')}</ul>`:'';
   return `<section class="stage">
-    <div class="stage-visual vframe" role="button" style="border-radius:0;aspect-ratio:auto">
-      ${media}
+    <div class="stage-visual" style="border-radius:0;aspect-ratio:auto">
+      <video src="${s.video}" poster="${s.poster}" autoplay muted loop playsinline></video>
       <div class="sveil"></div>
-      <div class="sinfo"><div class="il">Инфографика · placeholder</div>
-        <div class="ihint">${s.ihint}</div>
-        <div class="ibars"><i style="height:40%"></i><i style="height:70%"></i><i style="height:55%"></i><i style="height:100%"></i><i style="height:80%"></i></div>
-      </div>
-      <div class="stage-head"><div class="container"><div class="stage-num">${s.n}</div><div class="stage-title">${s.t}</div></div></div>
+      ${info}
+      <div class="stage-head"><div class="container"><div class="stage-title">${s.t}</div></div></div>
     </div>
     <div class="stage-desc"><p>${s.d}</p>${tags}</div>
   </section>`;
