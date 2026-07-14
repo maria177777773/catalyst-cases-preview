@@ -104,6 +104,14 @@ body{background:#111214;color:#e9eaec}
 .quote p{font-family:var(--disp);font-weight:800;color:#fff;font-size:clamp(24px,2.6vw,38px);line-height:1.22}
 .quote .q{color:var(--green);font-size:64px;line-height:0;display:block;margin-bottom:6px}
 
+/* ===== ФОТО-СТОРИ (фото на весь экран + подпись) ===== */
+.pstory .pshot{position:relative;width:100%;height:82vh;min-height:560px;overflow:hidden}
+.pstory .pshot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.pstory .pveil{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.85),rgba(0,0,0,.05) 52%)}
+.pstory .pcap{position:absolute;left:0;right:0;bottom:44px;z-index:2}
+.pstory .pnum{font-family:var(--disp);font-weight:800;color:var(--green);font-size:15px;letter-spacing:.14em}
+.pstory .ptext{font-family:var(--disp);font-weight:800;color:#fff;font-size:clamp(26px,3.2vw,46px);line-height:1.12;margin-top:8px;max-width:22ch;text-shadow:0 3px 20px rgba(0,0,0,.6)}
+
 /* ===== РЕАЛЬНЫЙ ФУТЕР ===== */
 .rftr{background:#0c0d0f;color:#cfd2d6;padding:72px 0 36px;border-top:1px solid #1c1e22}
 .rftr .container{display:grid;grid-template-columns:1.5fr 1fr 1.2fr;gap:40px}
@@ -178,8 +186,14 @@ body{background:#111214;color:#e9eaec}
   <p>Создать событие уровня, о котором говорят и после мероприятия. Мы предложили формат, где команды с нуля создают собственные фудтраки: строят конструкцию, придумывают бренд и меню, оформляют образ и в финале выходят на общий гастро-фестиваль. Нужно было договориться, распределить роли и уложиться во времени, чтобы каждая команда представила готовый фудтрак.</p>
 </div></div></section>
 
-<!-- КИНЕМАТОГРАФИЧЕСКИЕ БЛОКИ ЭТАПОВ -->
-<div id="stages"></div>
+<!-- ЗАГОЛОВОК ФОТО-СТОРИ -->
+<section class="sec" style="padding-bottom:34px"><div class="container">
+  <span class="eyebrow" style="display:block;margin-bottom:14px">Как проходил день</span>
+  <h2 style="color:#fff;max-width:22ch">От картона до готового гастро-бренда за один день</h2>
+</div></section>
+
+<!-- ФОТО-СТОРИ: фото на весь экран + подпись -->
+<div id="stages" class="pstory"></div>
 
 <!-- ЧТО РАЗВИЛИ -->
 <section class="sec"><div class="container">
@@ -235,35 +249,28 @@ body{background:#111214;color:#e9eaec}
 document.getElementById('met').innerHTML=`<div class="statnum">BEMA</div>
   <h2>Премия индустрии за проект «Фестиваль Фудтраков»</h2>`;
 
-/* 2 кинокадра: Сборка плотов + Гонки на плотах (без этапов, без звука, автоплей) */
-const blocks=[
- {t:'Создание фудтраков',img:'img/ft-build.jpg',
-  bubble:'10+ фудтраков собрали и оформили своими руками',
-  d:'Команды получали материалы и с нуля собирали собственные фудтраки: строили конструкцию, красили, придумывали название, бренд и меню. Кто-то отвечал за постройку, кто-то за дизайн, кто-то за концепцию и подачу. У каждой команды появился не просто картонный фудтрак, а узнаваемый гастро-бренд.',
-  tags:['Стройка и покраска','Бренд и название','Меню и подача']},
- {t:'Гастро-фестиваль',img:'img/ft-fest.jpg',
-  ihint:'жюри · дегустация · BEMA',
-  d:'В финале команды представили готовые фудтраки на общем фестивале: с оформлением, меню и атмосферой настоящей уличной еды. Жюри оценивало идею, дизайн и подачу, а участники дегустировали и болели друг за друга. Именно этот проект получил премию BEMA как один из лучших событийных форматов.',
-  tags:['Презентация фудтраков','Дегустация','Оценка жюри']}
+/* ФОТО-СТОРИ: 12 фото на весь экран с подписями */
+const photos=[
+ {img:'img/ft-p01.jpg',cap:'Всё начиналось с картона, кистей и красок'},
+ {img:'img/ft-p02.jpg',cap:'Пищевые колоранты, чтобы оформить каждый фудтрак'},
+ {img:'img/ft-p03.jpg',cap:'Инструктаж и распределение ролей в командах'},
+ {img:'img/ft-p04.jpg',cap:'Каждая команда придумывала своё меню'},
+ {img:'img/ft-p05.jpg',cap:'Сборка конструкции будущего фудтрака'},
+ {img:'img/ft-p06.jpg',cap:'Роспись и оформление своими руками'},
+ {img:'img/ft-p07.jpg',cap:'У каждого фудтрака появился свой бренд'},
+ {img:'img/ft-p08.jpg',cap:'Команды готовили и угощали настоящей едой'},
+ {img:'img/ft-p09.jpg',cap:'Готовый фудтрак MangoLore'},
+ {img:'img/ft-p10.jpg',cap:'Команды представляли свои фудтраки на фестивале'},
+ {img:'img/ft-p11.jpg',cap:'Общий гастро-фестиваль собрал всех участников'},
+ {img:'img/ft-p12.jpg',cap:'Десятки ярких фудтраков на одной площадке'}
 ];
-document.getElementById('stages').innerHTML=blocks.map(s=>{
-  const media = s.img
-    ? `<img class="sposter" src="${s.img}" alt="">`
-    : `<video src="${s.video}" poster="${s.poster}" autoplay muted loop playsinline></video>`;
-  const info = s.bubble
-    ? `<div class="sbubble">${s.bubble}</div>`
-    : `<div class="sinfo"><div class="il">Инфографика · placeholder</div><div class="ihint">${s.ihint}</div><div class="ibars"><i style="height:40%"></i><i style="height:70%"></i><i style="height:55%"></i><i style="height:100%"></i><i style="height:80%"></i></div></div>`;
-  const tags = s.tags?`<ul>${s.tags.map(x=>`<li>${x}</li>`).join('')}</ul>`:'';
-  return `<section class="stage">
-    <div class="stage-visual" style="border-radius:0;aspect-ratio:auto">
-      ${media}
-      <div class="sveil"></div>
-      ${info}
-      <div class="stage-head"><div class="container"><div class="stage-title">${s.t}</div></div></div>
-    </div>
-    <div class="stage-desc"><p>${s.d}</p>${tags}</div>
-  </section>`;
-}).join('');
+document.getElementById('stages').innerHTML=photos.map((p,i)=>`<section class="pshot">
+  <img src="${p.img}" alt="">
+  <div class="pveil"></div>
+  <div class="pcap"><div class="container"><div class="pnum">${String(i+1).padStart(2,'0')} / ${photos.length}</div><div class="ptext">${p.cap}</div></div></div>
+</section>`).join('');
+
+
 
 /* что развили: 6 баблов */
 const dev=['Команды в новых творческих ролях','Свой бренд и меню с нуля','Работа в ограниченное время','Самые яркие и узнаваемые фудтраки','Дегустация и общий фестиваль','Проект получил премию BEMA'];
