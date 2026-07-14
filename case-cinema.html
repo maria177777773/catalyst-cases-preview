@@ -6,75 +6,297 @@
 <link rel="stylesheet" href="base.css">
 <style>
 body{background:#111214;color:#e9eaec}
-.cine-hero{position:relative;height:100vh;min-height:640px;overflow:hidden}
+
+/* ===== РЕАЛЬНЫЙ ХЕДЕР (зелёная пилюля, как на главной) ===== */
+.rhdr{position:sticky;top:0;z-index:100;padding:14px 16px}
+.rhdr .pill{max-width:1400px;margin:0 auto;background:var(--green);border-radius:100px;
+  display:flex;align-items:center;gap:20px;padding:12px 14px 12px 26px;box-shadow:0 12px 34px rgba(0,0,0,.22)}
+.rhdr .logo{height:34px;flex:0 0 auto}
+.rhdr nav{display:flex;gap:24px;margin-left:6px}
+.rhdr nav a{color:#fff;font-family:var(--disp);font-weight:700;font-size:16px;display:inline-flex;align-items:center;gap:5px}
+.rhdr nav a:hover{opacity:.82}
+.rhdr .car{width:9px;height:9px;border-right:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(45deg);margin-top:-3px;opacity:.85}
+.rhdr .right{margin-left:auto;display:flex;align-items:center;gap:10px}
+.rhdr .ic{width:44px;height:44px;border-radius:50%;background:#fff;display:grid;place-items:center;flex:0 0 auto}
+.rhdr .ic svg{width:22px;height:22px}
+.rhdr .kp{background:#111214;color:#fff;font-family:var(--disp);font-weight:800;font-size:14px;
+  padding:14px 22px;border-radius:100px;white-space:nowrap;text-transform:uppercase;letter-spacing:.02em}
+@media(max-width:1100px){.rhdr nav{display:none}}
+
+/* ===== HERO ===== */
+.cine-hero{position:relative;height:100vh;min-height:640px;overflow:hidden;margin-top:-72px}
 .cine-hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.cine-hero .veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,.15) 40%,rgba(17,18,20,.95) 100%)}
-.cine-hero .inner{position:absolute;left:0;right:0;bottom:64px}
-.cine-hero .eyebrow{color:#fff;background:var(--green);display:inline-block;padding:7px 16px;border-radius:100px;margin-bottom:22px}
-.cine-hero h1{color:#fff;max-width:15ch}
-.cine-hero .sub{max-width:52ch;color:#d6d8db;font-size:23px;margin-top:20px}
-.cine-meta{display:flex;gap:44px;flex-wrap:wrap;margin-top:34px}
-.cine-meta .statnum{font-size:clamp(38px,4vw,62px)}
-.cine-meta small{display:block;color:#9aa0a6;font-size:15px;margin-top:6px;max-width:20ch}
-.narr{max-width:820px;margin:0 auto}
-.narr p{font-size:24px;line-height:1.6;color:#d6d8db}
-.metband{background:var(--green);color:#062;border-radius:var(--radius);padding:56px;text-align:center;color:#04381f}
+.cine-hero .veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.5) 0%,rgba(0,0,0,.12) 38%,rgba(17,18,20,.95) 100%)}
+.cine-hero .inner{position:absolute;left:0;right:0;bottom:60px}
+.cine-hero .bubble{color:#fff;background:var(--green);display:inline-block;padding:9px 20px;border-radius:100px;
+  font-family:var(--disp);font-weight:800;font-size:15px;margin-bottom:22px}
+.cine-hero h1{color:#fff;max-width:20ch;font-size:clamp(36px,4.2vw,68px)}
+.cine-hero .sub{max-width:56ch;color:#d6d8db;font-size:20px;line-height:1.5;margin-top:18px}
+.cine-meta{display:flex;gap:44px;flex-wrap:wrap;margin-top:32px}
+.cine-meta .statnum{font-size:clamp(34px,3.6vw,54px)}
+.cine-meta small{display:block;color:#9aa0a6;font-size:15px;margin-top:6px;max-width:22ch}
+
+/* ===== нарратив ===== */
+.narr{max-width:840px;margin:0 auto}
+.narr .lead{font-size:23px;color:#fff;line-height:1.5}
+.narr p{font-size:21px;line-height:1.62;color:#d6d8db}
+
+/* ===== ФАКТЫ-БАБЛЫ ===== */
+.facts-h{font-family:var(--disp);font-weight:800;color:var(--green);font-size:13px;text-transform:uppercase;letter-spacing:.14em;margin-bottom:20px}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.fact{background:#1a1c1f;border:1px solid #2a2c30;border-radius:18px;padding:26px 28px}
+.fact .fn{font-family:var(--disp);font-weight:800;color:#fff;font-size:clamp(30px,3vw,44px);line-height:1}
+.fact .fl{color:#9aa0a6;font-size:16px;margin-top:8px;line-height:1.4}
+@media(max-width:820px){.facts{grid-template-columns:1fr 1fr}}
+
+/* ===== ЗАДАЧА ===== */
+.task{background:#1a1c1f;border-left:5px solid var(--green);border-radius:16px;padding:38px 42px}
+.task h2{color:#fff;margin-bottom:16px}
+.task p{color:#d6d8db;font-size:21px;line-height:1.6;margin:0}
+
+/* ===== плашка результата +30% ===== */
+.metband{background:var(--green);border-radius:var(--radius);padding:52px;text-align:center;color:#04381f}
 .metband .statnum{color:#fff}
-.vgrid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
-.vgrid .vframe{aspect-ratio:16/10}
+.metband h2{color:#04381f;margin-top:8px;font-size:clamp(24px,2.2vw,34px);max-width:26ch;margin-left:auto;margin-right:auto}
+
+/* ===== КИНЕМАТОГРАФИЧЕСКИЕ БЛОКИ ЭТАПОВ ===== */
+.stage{position:relative}
+.stage-visual{position:relative;width:100%;height:86vh;min-height:600px;overflow:hidden;cursor:pointer}
+.stage-visual video,.stage-visual .sposter{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.stage-visual .sveil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,.1) 40%,rgba(0,0,0,.72))}
+.stage-head{position:absolute;left:0;right:0;bottom:52px;z-index:3}
+.stage-num{font-family:var(--disp);font-weight:800;font-size:16px;color:var(--green);letter-spacing:.14em;text-transform:uppercase}
+.stage-title{font-family:var(--disp);font-weight:800;color:#fff;font-size:clamp(38px,4.8vw,76px);line-height:1;margin-top:8px;text-shadow:0 4px 24px rgba(0,0,0,.5)}
+.splay{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:3;width:84px;height:84px;border-radius:50%;
+  background:rgba(255,255,255,.92);display:grid;place-items:center;box-shadow:0 12px 34px rgba(0,0,0,.4);transition:.2s}
+.stage-visual:hover .splay{transform:translate(-50%,-50%) scale(1.08);background:#fff}
+.splay::after{content:'';border-left:24px solid var(--ink);border-top:14px solid transparent;border-bottom:14px solid transparent;margin-left:6px}
+.sinfo{position:absolute;top:34px;right:34px;z-index:4;background:rgba(17,18,20,.62);backdrop-filter:blur(8px);
+  border:1.5px dashed rgba(255,255,255,.5);border-radius:16px;padding:18px 22px;max-width:270px}
+.sinfo .il{font-family:var(--disp);font-weight:800;color:var(--green);font-size:12px;text-transform:uppercase;letter-spacing:.1em}
+.sinfo .ihint{color:#fff;font-size:15px;margin-top:6px;line-height:1.35}
+.sinfo .ibars{display:flex;align-items:flex-end;gap:6px;height:34px;margin-top:12px;opacity:.85}
+.sinfo .ibars i{flex:1;background:var(--green);border-radius:3px}
+.stage-desc{max-width:1400px;margin:0 auto;padding:30px 40px 0}
+.stage-desc p{font-size:21px;line-height:1.58;color:#c7cacd;max-width:64ch;margin:0}
+.stage-desc ul{margin:16px 0 0;padding:0;list-style:none;display:flex;gap:10px;flex-wrap:wrap}
+.stage-desc li{background:#1a1c1f;border:1px solid #2a2c30;border-radius:100px;padding:8px 16px;color:#e9eaec;font-family:var(--disp);font-weight:700;font-size:14px}
+
+/* ===== что развили (список-баблы) ===== */
+.develop{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.dev{background:#1a1c1f;border:1px solid #2a2c30;border-radius:16px;padding:24px 26px;display:flex;gap:14px;align-items:flex-start}
+.dev .dnum{font-family:var(--disp);font-weight:800;color:var(--green);font-size:15px;flex:0 0 auto;margin-top:2px}
+.dev p{margin:0;color:#e9eaec;font-size:18px;line-height:1.4}
+@media(max-width:820px){.develop{grid-template-columns:1fr}}
+
+/* ===== полное видео ===== */
+.fullvid{position:relative;border-radius:var(--radius);overflow:hidden;aspect-ratio:16/9;cursor:pointer;background:#000}
+.fullvid video{width:100%;height:100%;object-fit:cover}
+.fullvid .fv-veil{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.5),rgba(0,0,0,.05) 55%)}
+.fullvid .fv-label{position:absolute;left:26px;bottom:22px;z-index:2;color:#fff;font-family:var(--disp);font-weight:800;font-size:24px;text-shadow:0 3px 14px rgba(0,0,0,.6)}
+
+/* ===== результат + цитата ===== */
 .reslist{display:grid;grid-template-columns:1fr 1fr;gap:22px}
 .rescard{background:#1a1c1f;border:1px solid #2a2c30;border-radius:var(--radius);padding:34px}
 .rescard .statnum{font-size:56px}
-.ftr{background:#0c0d0f}
-@media(max-width:760px){.vgrid,.reslist{grid-template-columns:1fr}}
+.quote{max-width:900px;margin:0 auto;text-align:center}
+.quote p{font-family:var(--disp);font-weight:800;color:#fff;font-size:clamp(24px,2.6vw,38px);line-height:1.22}
+.quote .q{color:var(--green);font-size:64px;line-height:0;display:block;margin-bottom:6px}
+
+/* ===== РЕАЛЬНЫЙ ФУТЕР ===== */
+.rftr{background:#0c0d0f;color:#cfd2d6;padding:72px 0 36px;border-top:1px solid #1c1e22}
+.rftr .container{display:grid;grid-template-columns:1.5fr 1fr 1.2fr;gap:40px}
+.rftr .logo{height:42px;margin-bottom:18px}
+.rftr h4{color:#fff;font-family:var(--disp);font-weight:800;font-size:14px;text-transform:uppercase;letter-spacing:.12em;margin:0 0 16px}
+.rftr a{display:block;padding:6px 0;color:#cfd2d6}
+.rftr a:hover{color:var(--green)}
+.rftr .fmsg{display:flex;gap:12px;margin-top:16px}
+.rftr .fmsg .ic{width:42px;height:42px;border-radius:12px;background:#1c1e22;border:1px solid #2a2c30;display:grid;place-items:center}
+.rftr .fmsg .ic svg{width:22px;height:22px}
+.rftr .fbot{grid-column:1/-1;border-top:1px solid #1c1e22;margin-top:34px;padding-top:22px;
+  display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:14px;color:#9aa0a6}
+.rftr .fbot a{display:inline;color:#9aa0a6}
+@media(max-width:820px){.rftr .container{grid-template-columns:1fr 1fr}.reslist{grid-template-columns:1fr}}
 </style></head>
 <body data-variant="1">
-<div data-header="dark"></div>
 
+<!-- РЕАЛЬНЫЙ ХЕДЕР -->
+<header class="rhdr"><div class="pill">
+  <img class="logo" src="assets/logo-white.png" alt="Каталист">
+  <nav>
+    <a href="#">Каталог услуг<span class="car"></span></a>
+    <a href="#">О нас<span class="car"></span></a>
+    <a href="#">Отзывы</a><a href="#">Агентствам</a><a href="#">Блог</a>
+  </nav>
+  <div class="right">
+    <a class="ic" href="tel:+74951283070" title="Телефон"><svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.3 1l-2.1 2.2Z" fill="#0aba59"/></svg></a>
+    <a class="ic" href="#" title="Telegram"><svg viewBox="0 0 24 24"><path d="M21.9 4.3 18.7 19.4c-.2 1-.9 1.3-1.7.8l-4.7-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.9L18 6.3c.4-.3-.1-.5-.6-.2L7.3 12.7l-4.6-1.4c-1-.3-1-1 .2-1.5l17.9-6.9c.8-.3 1.5.2 1.1 1.4Z" fill="#229ED9"/></svg></a>
+    <a class="ic" href="#" title="Max"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="7" fill="#111"/><path d="M6.6 16V8h2l2 3.2L12.6 8h2v8h-1.9v-4.8L10.9 14h-.6l-1.8-2.8V16H6.6Z" fill="#fff"/><circle cx="17.6" cy="7.4" r="2.1" fill="#0aba59"/></svg></a>
+    <a class="kp" href="#">Получи КП за ⚡ 2 минуты</a>
+  </div>
+</div></header>
+
+<!-- HERO -->
 <section class="cine-hero">
   <video src="video/raft-hero.mp4" poster="video/raft-hero.jpg" autoplay muted loop playsinline></video>
   <div class="veil"></div>
-  <div class="inner"><div class="container" id="hi"></div></div>
+  <div class="inner"><div class="container">
+    <span class="bubble">Клиент: компания InWave</span>
+    <h1>Гонки на плотах, которые объединили команду даже под ливнём</h1>
+    <p class="sub">Более 100 сотрудников InWave, специально изготовленные плоты, ограниченное время и внезапный ливень. Испытание на стойкость, изобретательность и скорость.</p>
+    <div class="cine-meta">
+      <div><div class="statnum">100+</div><small>сотрудников InWave</small></div>
+      <div><div class="statnum">+30%</div><small>коммуникация между отделами</small></div>
+      <div><div class="statnum">5</div><small>этапов дня на видео</small></div>
+    </div>
+  </div></div>
 </section>
 
-<section class="sec"><div class="container narr" id="narr"></div></section>
-
-<section class="sec" style="padding-top:0"><div class="container"><div class="metband" id="met"></div></div></section>
-
-<section class="sec" style="padding-top:0"><div class="container">
-  <div class="eyebrow" style="margin-bottom:26px">Видеохроника дня · 5 роликов</div>
-  <div class="vgrid" id="vg"></div>
+<!-- ЛИД -->
+<section class="sec"><div class="container narr">
+  <p class="lead">Более 100 сотрудников InWave приехали на одну из самых летних и азартных программ Каталиста. Для нашей команды это была очередная программа. А для InWave это было настоящим испытанием на стойкость, изобретательность и скорость.</p>
+  <p>А погода в этот день решила устроить участникам дополнительное испытание: начался сильный ливень. Но дождь не остановил команды. Наоборот, он сделал происходящее ещё эмоциональнее. Коллеги собирали плоты, пели, танцевали, поддерживали друг друга и продолжали борьбу за победу.</p>
 </div></section>
 
+<!-- ФАКТЫ-БАБЛЫ -->
 <section class="sec" style="padding-top:0"><div class="container">
-  <h2 style="color:#fff;margin-bottom:34px">Результат</h2>
-  <div class="reslist" id="res"></div>
-  <div style="text-align:center;margin-top:60px">
-    <a class="btn btn-green" href="#">Хочу такой тимбилдинг</a>
+  <div class="facts-h">Коротко о программе</div>
+  <div class="facts">
+    <div class="fact"><div class="fn">100+</div><div class="fl">сотрудников на площадке</div></div>
+    <div class="fact"><div class="fn">2</div><div class="fl">участника выдерживает каждый плот</div></div>
+    <div class="fact"><div class="fn">4</div><div class="fl">материала: трубы, пенопласт, дерево, пластик</div></div>
+    <div class="fact"><div class="fn">1</div><div class="fl">водная дистанция, гонка на время</div></div>
+    <div class="fact"><div class="fn">0</div><div class="fl">отмен, несмотря на ливень</div></div>
+    <div class="fact"><div class="fn">+30%</div><div class="fl">рост коммуникации между отделами</div></div>
   </div>
 </div></section>
 
-<div data-footer></div>
+<!-- ЗАДАЧА -->
+<section class="sec" style="padding-top:0"><div class="container"><div class="task">
+  <h2>Задача</h2>
+  <p>Сплотить коллектив InWave и улучшить коммуникацию между отделами. В обычной рабочей среде сотрудники разных направлений не всегда успевают познакомиться и почувствовать себя одной командой. Поэтому мы создали ситуацию, в которой общий результат зависел от каждого: нужно было быстро договориться, распределить роли, услышать коллег и успеть собрать конструкцию в ограниченное время.</p>
+</div></div></section>
+
+<!-- ЗАГОЛОВОК ЭТАПОВ -->
+<section class="sec" style="padding-bottom:40px"><div class="container">
+  <span class="eyebrow" style="display:block;margin-bottom:14px">Как проходила программа</span>
+  <h2 style="color:#fff;max-width:20ch">Пять этапов одного дождливого дня</h2>
+</div></section>
+
+<!-- КИНЕМАТОГРАФИЧЕСКИЕ БЛОКИ ЭТАПОВ -->
+<div id="stages"></div>
+
+<!-- ЧТО РАЗВИЛИ -->
+<section class="sec"><div class="container">
+  <span class="eyebrow" style="display:block;margin-bottom:14px">Что удалось развить</span>
+  <h2 style="color:#fff;margin-bottom:36px;max-width:20ch">Шесть командных навыков за один день</h2>
+  <div class="develop" id="develop"></div>
+</div></section>
+
+<!-- ПОЛНОЕ ВИДЕО -->
+<section class="sec" style="padding-top:0"><div class="container">
+  <span class="eyebrow" style="display:block;margin-bottom:14px">Полное видео тимбилдинга</span>
+  <h2 style="color:#fff;margin-bottom:28px">Как прошёл день целиком</h2>
+  <div class="fullvid vframe" role="button">
+    <video preload="none" poster="video/raft-hero.jpg" data-src="video/raft-hero.mp4"></video>
+    <div class="fv-veil"></div>
+    <span class="play"><span></span></span>
+    <span class="fv-label">Гонки на плотах · InWave · более 100 участников</span>
+  </div>
+</div></section>
+
+<!-- РЕЗУЛЬТАТ -->
+<section class="sec" style="padding-top:0"><div class="container">
+  <h2 style="color:#fff;margin-bottom:20px">Результат</h2>
+  <p style="max-width:840px;color:#d6d8db;font-size:21px;line-height:1.6;margin-bottom:40px">Несмотря на дождь, программа стала для сотрудников InWave настоящим командным приключением. Коллеги познакомились в неформальной обстановке, вместе прошли через сложное испытание и почувствовали себя частью одной команды и продолжили общаться уже не только в рамках своих отделов.</p>
+  <div class="reslist" id="res"></div>
+</div></section>
+
+<!-- ПЛАШКА +30% -->
+<section class="sec" style="padding-top:0"><div class="container"><div class="metband" id="met"></div></div></section>
+
+<!-- ИНСАЙТ -->
+<section class="sec" style="padding-top:0"><div class="container quote">
+  <span class="q">“</span>
+  <p>Чтобы по-настоящему объединить коллектив, нужно поставить его в ситуацию, где невозможно справиться в одиночку. А немного творчества, соревнования и дождя делают командный дух особенно заметным.</p>
+  <div style="text-align:center;margin-top:44px"><a class="btn btn-green" href="#">Хочу такой тимбилдинг для команды</a></div>
+</div></section>
+
+<!-- РЕАЛЬНЫЙ ФУТЕР -->
+<footer class="rftr"><div class="container">
+  <div>
+    <img class="logo" src="assets/logo-white.png" alt="Каталист">
+    <p style="max-width:340px;color:#9aa0a6;margin:0">Ивент-агентство «Каталист». Тимбилдинги и корпоративные ивенты под ключ по всей России с 2010 года.</p>
+    <div class="fmsg">
+      <a class="ic" href="#" title="Telegram"><svg viewBox="0 0 24 24"><path d="M21.9 4.3 18.7 19.4c-.2 1-.9 1.3-1.7.8l-4.7-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.9L18 6.3c.4-.3-.1-.5-.6-.2L7.3 12.7l-4.6-1.4c-1-.3-1-1 .2-1.5l17.9-6.9c.8-.3 1.5.2 1.1 1.4Z" fill="#229ED9"/></svg></a>
+      <a class="ic" href="#" title="Max"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="7" fill="#111"/><path d="M6.6 16V8h2l2 3.2L12.6 8h2v8h-1.9v-4.8L10.9 14h-.6l-1.8-2.8V16H6.6Z" fill="#fff"/><circle cx="17.6" cy="7.4" r="2.1" fill="#0aba59"/></svg></a>
+    </div>
+  </div>
+  <div><h4>Меню</h4>
+    <a href="#">Каталог услуг</a><a href="#">О нас</a><a href="#">Отзывы</a><a href="#">Агентствам</a><a href="#">Блог</a>
+  </div>
+  <div><h4>Контакты</h4>
+    <a href="tel:+74951283070">+7 (495) 128-30-70</a>
+    <a href="mailto:info@catalystrussia.ru">info@catalystrussia.ru</a>
+    <a href="#">Россия, Москва, Берсеневская наб., д. 2, с1</a>
+  </div>
+  <div class="fbot">
+    <span>© 2010-2025 Каталист, агентство организации тимбилдинга. ИП Варламова Мария Вадимовна, ИНН 772865086700</span>
+    <a href="#">Политика конфиденциальности</a>
+  </div>
+</div></footer>
+
 <script src="data.js"></script>
 <script>
-const c=window.CASE;
-hi.innerHTML=`<span class="eyebrow">${c.season} · ${c.client}</span>
-  <h1>${c.program}</h1>
-  <p class="sub">${c.tagline}</p>
-  <div class="cine-meta">
-    <div><div class="statnum">${c.people}</div><small>${c.peopleLabel}</small></div>
-    <div><div class="statnum">${c.metric}</div><small>${c.metricLabel}</small></div>
-    <div><div class="statnum">5</div><small>видеороликов с площадки</small></div>
-  </div>`;
-narr.innerHTML=`<p class="lead" style="font-size:27px;color:#fff">${c.lead}</p>`+c.story.map(s=>`<p>${s}</p>`).join('')+
-  `<p style="color:#fff;font-weight:500">Задача: ${c.task}</p>`;
-met.innerHTML=`<div class="statnum">${c.metric}</div><h2 style="color:#04381f;margin-top:10px">${c.metricLabel}</h2>`;
-vg.innerHTML=c.videos.map(v=>`<div class="vframe" role="button">
-  <video preload="none" poster="${v.poster}" data-src="${v.src}"></video>
-  ${v.tag?`<span class="vtag">${v.tag}</span>`:''}<span class="vlabel">${v.title}</span>
-  <span class="play"><span></span></span></div>`).join('');
-res.innerHTML=c.result.map((r,i)=>`<div class="rescard">
-  ${i===1?`<div class="statnum">+30%</div>`:`<div class="statnum">100%</div>`}
+/* плашка +30% */
+document.getElementById('met').innerHTML=`<div class="statnum">+30%</div>
+  <h2>Так вырос уровень организации рабочих процессов и передачи информации между отделами</h2>`;
+
+/* 5 кинематографических блоков этапов (полный текст программы) */
+const stages=[
+ {n:'Этап 1',t:'Старт',video:'video/raft-clip1.mp4',poster:'video/raft-clip1.jpg',
+  d:'Более 100 сотрудников приехали на площадку у воды. После инструктажа участников разделили на команды, и каждая получила свой комплект материалов и инструментов для строительства плота.',
+  tags:['Инструктаж','Деление на команды','Комплект материалов'], ihint:'100+ участников · команды-экипажи'},
+ {n:'Этап 2',t:'Подготовка',img:'img/plot-01.webp',
+  d:'Плот собирается из труб, пенопласта, дерева и пластика, и должен выдержать двух участников на водной дистанции. Тут же проявились командные роли: кто-то отвечал за расчёты и прочность, кто-то за сборку, кто-то за дизайн, а кто-то координировал всю команду.',
+  tags:['Расчёты и прочность','Сборка','Дизайн','Координация'], ihint:'плот держит 2 человек'},
+ {n:'Этап 3',t:'Сборка плотов',video:'video/raft-clip2.mp4',poster:'video/raft-clip2.jpg',
+  d:'Времени было в обрез: не успела команда собрать плот, не вышла на старт. Заодно каждая команда придумывала образ своего плота: от ракеты до банана и английской телефонной будки.',
+  tags:['Ограниченное время','Образ плота','Ракета / банан / будка'], ihint:'успей собрать вовремя'},
+ {n:'Этап 4',t:'Дождь не помеха',video:'video/raft-clip3.mp4',poster:'video/raft-clip3.jpg',
+  d:'В разгар дня пошёл сильный ливень. Материалы намокали, работать стало труднее, но участники не сдавались. Помогали друг другу, поддерживали команды, шутили, пели и танцевали прямо под дождём.',
+  tags:['Сильный ливень','0 отмен','Взаимопомощь'], ihint:'0 отмен под ливнём ☔'},
+ {n:'Этап 5',t:'Гонка на воде',video:'video/raft-clip4.mp4',poster:'video/raft-clip4.jpg',
+  d:'После презентаций плотов команды вышли на воду и проверили конструкции в гонке на время. Победителей определяли не только по скорости, но и по креативности командного решения. А все участники стали ближе друг к другу.',
+  tags:['Презентации','Гонка на время','Скорость + креатив'], ihint:'+30% коммуникация'}
+];
+document.getElementById('stages').innerHTML=stages.map(s=>{
+  const media = s.video
+    ? `<video preload="none" poster="${s.poster}" data-src="${s.video}"></video><span class="splay"></span>`
+    : `<img class="sposter" src="${s.img}" alt="">`;
+  const tags = s.tags?`<ul>${s.tags.map(x=>`<li>${x}</li>`).join('')}</ul>`:'';
+  return `<section class="stage">
+    <div class="stage-visual vframe" role="button" style="border-radius:0;aspect-ratio:auto">
+      ${media}
+      <div class="sveil"></div>
+      <div class="sinfo"><div class="il">Инфографика · placeholder</div>
+        <div class="ihint">${s.ihint}</div>
+        <div class="ibars"><i style="height:40%"></i><i style="height:70%"></i><i style="height:55%"></i><i style="height:100%"></i><i style="height:80%"></i></div>
+      </div>
+      <div class="stage-head"><div class="container"><div class="stage-num">${s.n}</div><div class="stage-title">${s.t}</div></div></div>
+    </div>
+    <div class="stage-desc"><p>${s.d}</p>${tags}</div>
+  </section>`;
+}).join('');
+
+/* что развили: 6 баблов */
+const dev=['Знакомство сотрудников между собой','Коммуникация между отделами','Слаженная работа в ограниченное время','Распределение задач и быстрые решения','Командный дух и поддержка коллег','Ориентация на общий результат'];
+document.getElementById('develop').innerHTML=dev.map((x,i)=>`<div class="dev"><span class="dnum">0${i+1}</span><p>${x}</p></div>`).join('');
+
+/* результат-карточки */
+const results=['Все коллеги познакомились в неформальной обстановке и стали друзьями, общаются уже не только внутри своих отделов.','Организация рабочих процессов и передача информации между отделами выросли на 30%.'];
+document.getElementById('res').innerHTML=results.map((r,i)=>`<div class="rescard">
+  <div class="statnum">${i===1?'+30%':'100%'}</div>
   <p style="margin:14px 0 0;color:#d6d8db;font-size:20px">${r}</p></div>`).join('');
 </script>
 <script src="common.js"></script>
