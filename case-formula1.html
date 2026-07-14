@@ -1,0 +1,276 @@
+<!doctype html><html lang="ru"><head>
+<meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Формула-1 для Wilo · кейс Каталист</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="base.css">
+<style>
+body{background:#111214;color:#e9eaec}
+
+/* ===== РЕАЛЬНЫЙ ХЕДЕР (зелёная пилюля, как на главной) ===== */
+.rhdr{position:sticky;top:0;z-index:100;padding:14px 16px}
+.rhdr .pill{max-width:1400px;margin:0 auto;background:var(--green);border-radius:100px;
+  display:flex;align-items:center;gap:20px;padding:12px 14px 12px 26px;box-shadow:0 12px 34px rgba(0,0,0,.22)}
+.rhdr .logo{height:34px;flex:0 0 auto}
+.rhdr nav{display:flex;gap:24px;margin-left:6px}
+.rhdr nav a{color:#fff;font-family:var(--disp);font-weight:700;font-size:16px;display:inline-flex;align-items:center;gap:5px}
+.rhdr nav a:hover{opacity:.82}
+.rhdr .car{width:9px;height:9px;border-right:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(45deg);margin-top:-3px;opacity:.85}
+.rhdr .right{margin-left:auto;display:flex;align-items:center;gap:10px}
+.rhdr .ic{width:44px;height:44px;border-radius:50%;background:#fff;display:grid;place-items:center;flex:0 0 auto}
+.rhdr .ic svg{width:22px;height:22px}
+.rhdr .kp{background:#111214;color:#fff;font-family:var(--disp);font-weight:800;font-size:14px;
+  padding:14px 22px;border-radius:100px;white-space:nowrap;text-transform:uppercase;letter-spacing:.02em}
+@media(max-width:1100px){.rhdr nav{display:none}}
+
+/* ===== HERO ===== */
+.cine-hero{position:relative;height:100vh;min-height:640px;overflow:hidden;margin-top:-72px}
+.cine-hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cine-hero .veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.5) 0%,rgba(0,0,0,.12) 38%,rgba(17,18,20,.95) 100%)}
+.cine-hero .inner{position:absolute;left:0;right:0;bottom:60px}
+.cine-hero .bubble{color:#fff;background:var(--green);display:inline-block;padding:9px 20px;border-radius:100px;
+  font-family:var(--disp);font-weight:800;font-size:15px;margin-bottom:22px}
+.cine-hero h1{color:#fff;max-width:20ch;font-size:clamp(36px,4.2vw,68px)}
+.cine-hero .sub{max-width:56ch;color:#d6d8db;font-size:20px;line-height:1.5;margin-top:18px}
+.cine-meta{display:flex;gap:44px;flex-wrap:wrap;margin-top:32px}
+.cine-meta .statnum{font-size:clamp(34px,3.6vw,54px)}
+.cine-meta small{display:block;color:#9aa0a6;font-size:15px;margin-top:6px;max-width:22ch}
+
+/* ===== нарратив ===== */
+.narr{max-width:840px;margin:0 auto}
+.narr .lead{font-size:23px;color:#fff;line-height:1.5}
+.narr p{font-size:21px;line-height:1.62;color:#d6d8db}
+
+/* ===== ФАКТЫ-БАБЛЫ ===== */
+.facts-h{font-family:var(--disp);font-weight:800;color:var(--green);font-size:13px;text-transform:uppercase;letter-spacing:.14em;margin-bottom:20px}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.fact{background:#1a1c1f;border:1px solid #2a2c30;border-radius:18px;padding:26px 28px}
+.fact .fn{font-family:var(--disp);font-weight:800;color:#fff;font-size:clamp(30px,3vw,44px);line-height:1}
+.fact .fl{color:#9aa0a6;font-size:16px;margin-top:8px;line-height:1.4}
+@media(max-width:820px){.facts{grid-template-columns:1fr 1fr}}
+
+/* ===== ЗАДАЧА ===== */
+.task{background:#1a1c1f;border-left:5px solid var(--green);border-radius:16px;padding:38px 42px}
+.task h2{color:#fff;margin-bottom:16px}
+.task p{color:#d6d8db;font-size:21px;line-height:1.6;margin:0}
+
+/* ===== плашка результата +30% ===== */
+.metband{background:var(--green);border-radius:var(--radius);padding:52px;text-align:center;color:#04381f}
+.metband .statnum{color:#fff}
+.metband h2{color:#04381f;margin-top:8px;font-size:clamp(24px,2.2vw,34px);max-width:26ch;margin-left:auto;margin-right:auto}
+
+/* ===== КИНЕМАТОГРАФИЧЕСКИЕ БЛОКИ ЭТАПОВ ===== */
+.stage{position:relative}
+.stage-visual{position:relative;width:100%;height:86vh;min-height:600px;overflow:hidden;cursor:pointer}
+.stage-visual video,.stage-visual .sposter{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.stage-visual .sveil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,.1) 40%,rgba(0,0,0,.72))}
+.stage-head{position:absolute;left:0;right:0;bottom:52px;z-index:3}
+.stage-num{font-family:var(--disp);font-weight:800;font-size:16px;color:var(--green);letter-spacing:.14em;text-transform:uppercase}
+.stage-title{font-family:var(--disp);font-weight:800;color:#fff;font-size:clamp(38px,4.8vw,76px);line-height:1;margin-top:8px;text-shadow:0 4px 24px rgba(0,0,0,.5)}
+.splay{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:3;width:84px;height:84px;border-radius:50%;
+  background:rgba(255,255,255,.92);display:grid;place-items:center;box-shadow:0 12px 34px rgba(0,0,0,.4);transition:.2s}
+.stage-visual:hover .splay{transform:translate(-50%,-50%) scale(1.08);background:#fff}
+.splay::after{content:'';border-left:24px solid var(--ink);border-top:14px solid transparent;border-bottom:14px solid transparent;margin-left:6px}
+.sinfo{position:absolute;top:34px;right:34px;z-index:4;background:rgba(17,18,20,.62);backdrop-filter:blur(8px);
+  border:1.5px dashed rgba(255,255,255,.5);border-radius:16px;padding:18px 22px;max-width:270px}
+.sinfo .il{font-family:var(--disp);font-weight:800;color:var(--green);font-size:12px;text-transform:uppercase;letter-spacing:.1em}
+.sinfo .ihint{color:#fff;font-size:15px;margin-top:6px;line-height:1.35}
+.sinfo .ibars{display:flex;align-items:flex-end;gap:6px;height:34px;margin-top:12px;opacity:.85}
+.sinfo .ibars i{flex:1;background:var(--green);border-radius:3px}
+.sbubble{position:absolute;top:34px;right:34px;z-index:4;background:var(--green);color:#04140b;font-family:var(--disp);font-weight:800;font-size:17px;padding:16px 22px;border-radius:16px;max-width:300px;line-height:1.25;box-shadow:0 10px 30px rgba(0,0,0,.3)}
+.stage-desc{max-width:1400px;margin:0 auto;padding:30px 40px 0}
+.stage-desc p{font-size:21px;line-height:1.58;color:#c7cacd;max-width:64ch;margin:0}
+.stage-desc ul{margin:16px 0 0;padding:0;list-style:none;display:flex;gap:10px;flex-wrap:wrap}
+.stage-desc li{background:#1a1c1f;border:1px solid #2a2c30;border-radius:100px;padding:8px 16px;color:#e9eaec;font-family:var(--disp);font-weight:700;font-size:14px}
+
+/* ===== что развили (список-баблы) ===== */
+.develop{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.dev{background:#1a1c1f;border:1px solid #2a2c30;border-radius:16px;padding:24px 26px;display:flex;gap:14px;align-items:flex-start}
+.dev .dnum{font-family:var(--disp);font-weight:800;color:var(--green);font-size:15px;flex:0 0 auto;margin-top:2px}
+.dev p{margin:0;color:#e9eaec;font-size:18px;line-height:1.4}
+@media(max-width:820px){.develop{grid-template-columns:1fr}}
+
+/* ===== полное видео ===== */
+.fullvid{position:relative;border-radius:var(--radius);overflow:hidden;aspect-ratio:16/9;cursor:pointer;background:#000}
+.fullvid video{width:100%;height:100%;object-fit:cover}
+.fullvid .fv-veil{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.5),rgba(0,0,0,.05) 55%)}
+.fullvid .fv-label{position:absolute;left:26px;bottom:22px;z-index:2;color:#fff;font-family:var(--disp);font-weight:800;font-size:24px;text-shadow:0 3px 14px rgba(0,0,0,.6)}
+
+/* ===== результат + цитата ===== */
+.reslist{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.rescard{background:#1a1c1f;border:1px solid #2a2c30;border-radius:var(--radius);padding:34px}
+.rescard .statnum{font-size:56px}
+.quote{max-width:900px;margin:0 auto;text-align:center}
+.quote p{font-family:var(--disp);font-weight:800;color:#fff;font-size:clamp(24px,2.6vw,38px);line-height:1.22}
+.quote .q{color:var(--green);font-size:64px;line-height:0;display:block;margin-bottom:6px}
+
+/* ===== РЕАЛЬНЫЙ ФУТЕР ===== */
+.rftr{background:#0c0d0f;color:#cfd2d6;padding:72px 0 36px;border-top:1px solid #1c1e22}
+.rftr .container{display:grid;grid-template-columns:1.5fr 1fr 1.2fr;gap:40px}
+.rftr .logo{height:42px;margin-bottom:18px}
+.rftr h4{color:#fff;font-family:var(--disp);font-weight:800;font-size:14px;text-transform:uppercase;letter-spacing:.12em;margin:0 0 16px}
+.rftr a{display:block;padding:6px 0;color:#cfd2d6}
+.rftr a:hover{color:var(--green)}
+.rftr .fmsg{display:flex;gap:12px;margin-top:16px}
+.rftr .fmsg .ic{width:42px;height:42px;border-radius:12px;background:#1c1e22;border:1px solid #2a2c30;display:grid;place-items:center}
+.rftr .fmsg .ic svg{width:22px;height:22px}
+.rftr .fbot{grid-column:1/-1;border-top:1px solid #1c1e22;margin-top:34px;padding-top:22px;
+  display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:14px;color:#9aa0a6}
+.rftr .fbot a{display:inline;color:#9aa0a6}
+@media(max-width:820px){.rftr .container{grid-template-columns:1fr 1fr}.reslist{grid-template-columns:1fr}}
+</style></head>
+<body>
+
+<!-- РЕАЛЬНЫЙ ХЕДЕР -->
+<header class="rhdr"><div class="pill">
+  <img class="logo" src="assets/logo-white.png" alt="Каталист">
+  <nav>
+    <a href="#">Каталог услуг<span class="car"></span></a>
+    <a href="#">О нас<span class="car"></span></a>
+    <a href="#">Отзывы</a><a href="#">Агентствам</a><a href="#">Блог</a>
+  </nav>
+  <div class="right">
+    <a class="ic" href="tel:+74951283070" title="Телефон"><svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.3 1l-2.1 2.2Z" fill="#0aba59"/></svg></a>
+    <a class="ic" href="#" title="Telegram"><svg viewBox="0 0 24 24"><path d="M21.9 4.3 18.7 19.4c-.2 1-.9 1.3-1.7.8l-4.7-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.9L18 6.3c.4-.3-.1-.5-.6-.2L7.3 12.7l-4.6-1.4c-1-.3-1-1 .2-1.5l17.9-6.9c.8-.3 1.5.2 1.1 1.4Z" fill="#229ED9"/></svg></a>
+    <a class="ic" href="#" title="Max"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="7" fill="#111"/><path d="M6.6 16V8h2l2 3.2L12.6 8h2v8h-1.9v-4.8L10.9 14h-.6l-1.8-2.8V16H6.6Z" fill="#fff"/><circle cx="17.6" cy="7.4" r="2.1" fill="#0aba59"/></svg></a>
+    <a class="kp" href="#">Получи КП за ⚡ 2 минуты</a>
+  </div>
+</div></header>
+
+<!-- HERO -->
+<section class="cine-hero">
+  <video src="video/f1-hero.mp4" poster="video/f1-hero.jpg" autoplay muted loop playsinline></video>
+  <div class="veil"></div>
+  <div class="inner"><div class="container">
+    <span class="bubble">Клиент: компания Wilo</span>
+    <h1>Гонки Формула-1: 350 участников, 50 болидов и один чемпион</h1>
+    <p class="sub">Когда корпоратив превращается в настоящую гонку. 350 сотрудников Wilo стали инженерами, конструкторами, дизайнерами и гонщиками и собрали собственные болиды.</p>
+    <div class="cine-meta">
+      <div><div class="statnum">350</div><small>участников Wilo</small></div>
+      <div><div class="statnum">50+</div><small>гоночных болидов</small></div>
+      <div><div class="statnum">1</div><small>чемпион дня</small></div>
+    </div>
+  </div></div>
+</section>
+
+<!-- ЛИД -->
+<section class="sec"><div class="container narr">
+  <p class="lead">Для компании Wilo мы организовали тимбилдинг в формате «Гонки Формула-1». Сказать, что это было невероятно, значит ничего не сказать.</p>
+  <p>350 сотрудников на несколько часов превратились в инженеров, конструкторов, дизайнеров, гонщиков и болельщиков. Они собирали собственные болиды, придумывали для них дизайн, проходили техническую проверку и выходили на старт. В финале остался только один победитель.</p>
+</div></section>
+
+<!-- ФАКТЫ-БАБЛЫ -->
+<section class="sec" style="padding-top:0"><div class="container">
+  <div class="facts-h">Коротко о программе</div>
+  <div class="facts">
+    <div class="fact"><div class="fn">350</div><div class="fl">участников на площадке</div></div>
+    <div class="fact"><div class="fn">50+</div><div class="fl">гоночных болидов собрали</div></div>
+    <div class="fact"><div class="fn">1</div><div class="fl">чемпион по итогам финала</div></div>
+    <div class="fact"><div class="fn">3</div><div class="fl">технических круга на команду</div></div>
+    <div class="fact"><div class="fn">10</div><div class="fl">ролей внутри каждой команды</div></div>
+    <div class="fact"><div class="fn">100%</div><div class="fl">команд вышли на старт</div></div>
+  </div>
+</div></section>
+
+<!-- ЗАДАЧА -->
+<section class="sec" style="padding-top:0"><div class="container"><div class="task">
+  <h2>Задача</h2>
+  <p>Формально задача была простой: развлечь коллег и организовать необычный корпоратив. Но мы в Каталист не любим делать «просто корпоративы». Нам хотелось создать для Wilo событие, о котором сотрудники будут вспоминать ещё долго. Поэтому вместо стандартной программы мы предложили участникам почувствовать себя частью настоящей гоночной команды: договориться, распределить роли, собрать работающий болид в ограниченное время, пройти проверку жюри и выйти на трассу за победу.</p>
+</div></div></section>
+
+<!-- КИНЕМАТОГРАФИЧЕСКИЕ БЛОКИ ЭТАПОВ -->
+<div id="stages"></div>
+
+<!-- ЧТО РАЗВИЛИ -->
+<section class="sec"><div class="container">
+  <span class="eyebrow" style="display:block;margin-bottom:14px">Что особенно запомнилось</span>
+  <h2 style="color:#fff;margin-bottom:36px;max-width:20ch">Шесть моментов одного гоночного дня</h2>
+  <div class="develop" id="develop"></div>
+</div></section>
+
+<!-- РЕЗУЛЬТАТ -->
+<section class="sec" style="padding-top:0"><div class="container">
+  <h2 style="color:#fff;margin-bottom:20px">Результат</h2>
+  <p style="max-width:840px;color:#d6d8db;font-size:21px;line-height:1.6;margin-bottom:40px">Сотрудники Wilo познакомились друг с другом в неформальной обстановке и стали ближе. Даже те, кто недавно присоединился к компании, быстро включились в общую работу и почувствовали себя частью коллектива. Коллектив стал заметно сплочённее, а рабочее общение стало более открытым и неформальным.</p>
+  <div class="reslist" id="res"></div>
+</div></section>
+
+<!-- ПЛАШКА +30% -->
+<section class="sec" style="padding-top:0"><div class="container"><div class="metband" id="met"></div></div></section>
+
+<!-- ИНСАЙТ -->
+<section class="sec" style="padding-top:0"><div class="container quote">
+  <span class="q">“</span>
+  <p>Мы не просто выполнили задачу клиента и организовали развлекательную программу. Мы создали полноценное командное событие и превзошли ожидания Wilo.</p>
+  <div style="text-align:center;margin-top:44px"><a class="btn btn-green" href="#">Хочу такой тимбилдинг для команды</a></div>
+</div></section>
+
+<!-- РЕАЛЬНЫЙ ФУТЕР -->
+<footer class="rftr"><div class="container">
+  <div>
+    <img class="logo" src="assets/logo-white.png" alt="Каталист">
+    <p style="max-width:340px;color:#9aa0a6;margin:0">Ивент-агентство «Каталист». Тимбилдинги и корпоративные ивенты под ключ по всей России с 2010 года.</p>
+    <div class="fmsg">
+      <a class="ic" href="#" title="Telegram"><svg viewBox="0 0 24 24"><path d="M21.9 4.3 18.7 19.4c-.2 1-.9 1.3-1.7.8l-4.7-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.9L18 6.3c.4-.3-.1-.5-.6-.2L7.3 12.7l-4.6-1.4c-1-.3-1-1 .2-1.5l17.9-6.9c.8-.3 1.5.2 1.1 1.4Z" fill="#229ED9"/></svg></a>
+      <a class="ic" href="#" title="Max"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="7" fill="#111"/><path d="M6.6 16V8h2l2 3.2L12.6 8h2v8h-1.9v-4.8L10.9 14h-.6l-1.8-2.8V16H6.6Z" fill="#fff"/><circle cx="17.6" cy="7.4" r="2.1" fill="#0aba59"/></svg></a>
+    </div>
+  </div>
+  <div><h4>Меню</h4>
+    <a href="#">Каталог услуг</a><a href="#">О нас</a><a href="#">Отзывы</a><a href="#">Агентствам</a><a href="#">Блог</a>
+  </div>
+  <div><h4>Контакты</h4>
+    <a href="tel:+74951283070">+7 (495) 128-30-70</a>
+    <a href="mailto:info@catalystrussia.ru">info@catalystrussia.ru</a>
+    <a href="#">Россия, Москва, Берсеневская наб., д. 2, с1</a>
+  </div>
+  <div class="fbot">
+    <span>© 2010-2025 Каталист, агентство организации тимбилдинга. ИП Варламова Мария Вадимовна, ИНН 772865086700</span>
+    <a href="#">Политика конфиденциальности</a>
+  </div>
+</div></footer>
+
+<script src="data.js"></script>
+<script>
+/* плашка +30% */
+document.getElementById('met').innerHTML=`<div class="statnum">350</div>
+  <h2>Сотрудников Wilo за один гоночный день стали одной командой</h2>`;
+
+/* 2 кинокадра: Сборка плотов + Гонки на плотах (без этапов, без звука, автоплей) */
+const blocks=[
+ {t:'Сборка болидов',video:'video/f1-sborka.mp4',poster:'video/f1-sborka.jpg',
+  bubble:'50+ болидов из картона собрали своими руками',
+  d:'Представьте: 350 человек одновременно собирают десятки гоночных машин. Кто-то разбирается в чертежах, кто-то собирает корпус, кто-то отвечает за колёса и оси, кто-то придумывает дизайн, а кто-то следит за временем. Болиды создавались из подготовленных материалов и картона: корпус, кабина пилота, коробка и крышка двигателя, спойлеры и оси с колёсами. В результате у каждой команды появился не просто картонный автомобиль, а собственный гоночный бренд.',
+  tags:['Чертежи и корпус','Колёса и оси','Дизайн и название','10 ролей в команде']},
+ {t:'Гонки на трассе',video:'video/f1-gonki.mp4',poster:'video/f1-gonki.jpg',
+  ihint:'3 круга · 1 чемпион',
+  d:'После сборки и технической проверки команды вышли на старт. Каждая группа проходила три технических круга на время, а победители заездов встречались в финальном раунде за звание чемпиона. Настоящий драг-рейсинг: азарт, крики поддержки и болиды, которые участники только что собрали своими руками. Все выложились по полной.',
+  tags:['Техпроверка жюри','3 круга на время','Финальный заезд']}
+];
+document.getElementById('stages').innerHTML=blocks.map(s=>{
+  const info = s.bubble
+    ? `<div class="sbubble">${s.bubble}</div>`
+    : `<div class="sinfo"><div class="il">Инфографика · placeholder</div><div class="ihint">${s.ihint}</div><div class="ibars"><i style="height:40%"></i><i style="height:70%"></i><i style="height:55%"></i><i style="height:100%"></i><i style="height:80%"></i></div></div>`;
+  const tags = s.tags?`<ul>${s.tags.map(x=>`<li>${x}</li>`).join('')}</ul>`:'';
+  return `<section class="stage">
+    <div class="stage-visual" style="border-radius:0;aspect-ratio:auto">
+      <video src="${s.video}" poster="${s.poster}" autoplay muted loop playsinline></video>
+      <div class="sveil"></div>
+      ${info}
+      <div class="stage-head"><div class="container"><div class="stage-title">${s.t}</div></div></div>
+    </div>
+    <div class="stage-desc"><p>${s.d}</p>${tags}</div>
+  </section>`;
+}).join('');
+
+/* что развили: 6 баблов */
+const dev=['Коллеги в совершенно новых ролях','Вместе принимали решения о конструкции','Поддерживали своих гонщиков','Переживали из-за каждой неполадки','Радовались победам других команд','Фотографировались со своими болидами'];
+document.getElementById('develop').innerHTML=dev.map((x,i)=>`<div class="dev"><span class="dnum">0${i+1}</span><p>${x}</p></div>`).join('');
+
+/* результат-карточки */
+const results=['Все команды собрали болиды и вышли на старт, включая новичков Wilo.','Сотрудники познакомились в неформальной обстановке и стали заметно сплочённее.'];
+document.getElementById('res').innerHTML=results.map((r,i)=>`<div class="rescard">
+  <div class="statnum">${i===1?'350':'100%'}</div>
+  <p style="margin:14px 0 0;color:#d6d8db;font-size:20px">${r}</p></div>`).join('');
+</script>
+<script src="common.js"></script>
+</body></html>
