@@ -186,19 +186,12 @@ body{background:#111214;color:#e9eaec}
   <p>Создать событие уровня, о котором говорят и после мероприятия. Мы предложили формат, где команды с нуля создают собственные фудтраки: строят конструкцию, придумывают бренд и меню, оформляют образ и в финале выходят на общий гастро-фестиваль. Нужно было договориться, распределить роли и уложиться во времени, чтобы каждая команда представила готовый фудтрак.</p>
 </div></div></section>
 
-<!-- ЗАГОЛОВОК ФОТО-СТОРИ -->
-<section class="sec" style="padding-bottom:34px"><div class="container">
-  <span class="eyebrow" style="display:block;margin-bottom:14px">Как проходил день</span>
-  <h2 style="color:#fff;max-width:22ch">От картона до готового гастро-бренда за один день</h2>
-</div></section>
 
-<!-- ФОТО-СТОРИ: фото на весь экран + подпись -->
-<div id="stages" class="pstory"></div>
 
 <!-- ЧТО РАЗВИЛИ -->
 <section class="sec"><div class="container">
   <span class="eyebrow" style="display:block;margin-bottom:14px">Что особенно запомнилось</span>
-  <h2 style="color:#fff;margin-bottom:36px;max-width:20ch">Шесть моментов гастро-дня</h2>
+  <h2 style="color:#fff;margin-bottom:36px;max-width:20ch">6 моментов гастро-дня</h2>
   <div class="develop" id="develop"></div>
 </div></section>
 
@@ -249,26 +242,7 @@ body{background:#111214;color:#e9eaec}
 document.getElementById('met').innerHTML=`<div class="statnum">BEMA</div>
   <h2>Премия индустрии за проект «Фестиваль Фудтраков»</h2>`;
 
-/* ФОТО-СТОРИ: 12 фото на весь экран с подписями */
-const photos=[
- {img:'img/ft-p01.jpg',cap:'Всё начиналось с картона, кистей и красок'},
- {img:'img/ft-p02.jpg',cap:'Краски и колоранты для оформления бортов'},
- {img:'img/ft-p03.jpg',cap:'Инструктаж и распределение ролей в командах'},
- {img:'img/ft-p04.jpg',cap:'Каждая команда придумывала своё меню'},
- {img:'img/ft-p05.jpg',cap:'Сборка конструкции будущего фудтрака'},
- {img:'img/ft-p06.jpg',cap:'Роспись и оформление своими руками'},
- {img:'img/ft-p07.jpg',cap:'У каждого фудтрака появился свой бренд'},
- {img:'img/ft-p08.jpg',cap:'Команды готовили и угощали настоящей едой'},
- {img:'img/ft-p09.jpg',cap:'Готовый фудтрак MangoLore'},
- {img:'img/ft-p10.jpg',cap:'Команды представляли свои фудтраки на фестивале'},
- {img:'img/ft-p11.jpg',cap:'Общий гастро-фестиваль собрал всех участников'},
- {img:'img/ft-p12.jpg',cap:'Яркие фудтраки на одной площадке'}
-];
-document.getElementById('stages').innerHTML=photos.map((p,i)=>`<section class="pshot">
-  <img src="${p.img}" alt="">
-  <div class="pveil"></div>
-  <div class="pcap"><div class="container"><div class="pnum">${String(i+1).padStart(2,'0')} / ${photos.length}</div><div class="ptext">${p.cap}</div></div></div>
-</section>`).join('');
+
 
 
 
