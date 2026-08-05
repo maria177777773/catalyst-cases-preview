@@ -189,12 +189,7 @@ body{background:#111214;color:#e9eaec}
 <!-- ВИДЕО-БЛОКИ -->
 <div id="stages"></div>
 
-<!-- ФОТО-СТОРИ -->
-<section class="sec" style="padding-bottom:34px"><div class="container">
-  <span class="eyebrow" style="display:block;margin-bottom:14px">Фотохроника дня</span>
-  <h2 style="color:#fff;max-width:22ch">От первой картонной детали до финиша на воде</h2>
-</div></section>
-<div id="photostory" class="pstory"></div>
+
 
 <!-- ЧТО РАЗВИЛИ -->
 <section class="sec"><div class="container">
@@ -287,26 +282,7 @@ document.getElementById('res').innerHTML=results.map((r,i)=>`<div class="rescard
   <div class="statnum">${i===1?'+30%':'100%'}</div>
   <p style="margin:14px 0 0;color:#d6d8db;font-size:20px">${r}</p></div>`).join('');
 
-/* ФОТО-СТОРИ плотов: фото на весь экран с подписями (существующие img/plot-*.webp) */
-const photos=[
- {img:'img/plot-06.webp',cap:'Материалы: пенопласт, трубы и дерево'},
- {img:'img/plot-10.webp',cap:'Сборка плота всей командой'},
- {img:'img/plot-09.webp',cap:'Каждый нашёл свою роль в команде'},
- {img:'img/plot-13.webp',cap:'Оформление и дизайн плота'},
- {img:'img/plot-17.webp',cap:'Роспись плота под открытым небом'},
- {img:'img/plot-08.webp',cap:'Плот собирали из специально изготовленных материалов'},
- {img:'img/plot-19.webp',cap:'Конструкция должна выдержать команду на воде'},
- {img:'img/plot-05.webp',cap:'Команда и её готовый плот'},
- {img:'img/plot-25.webp',cap:'Гонка на воде: азарт и брызги'},
- {img:'img/plot-24.webp',cap:'На плоту под флагом своей команды'},
- {img:'img/plot-22.webp',cap:'Финальный заплыв на плотах'},
- {img:'img/plot-21.webp',cap:'Путь от картона до финиша команда прошла вместе'}
-];
-document.getElementById('photostory').innerHTML=photos.map((p,i)=>`<section class="pshot">
-  <img src="${p.img}" alt="">
-  <div class="pveil"></div>
-  <div class="pcap"><div class="container"><div class="pnum">${String(i+1).padStart(2,'0')} / ${photos.length}</div><div class="ptext">${p.cap}</div></div></div>
-</section>`).join('');
+
 </script>
 <script src="common.js"></script>
 </body></html>
