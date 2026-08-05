@@ -189,12 +189,7 @@ body{background:#111214;color:#e9eaec}
 <!-- ВИДЕО-БЛОКИ -->
 <div id="stages"></div>
 
-<!-- ФОТО-СТОРИ -->
-<section class="sec" style="padding-bottom:34px"><div class="container">
-  <span class="eyebrow" style="display:block;margin-bottom:14px">Как проходил день</span>
-  <h2 style="color:#fff;max-width:22ch">От картонной детали до финального заезда</h2>
-</div></section>
-<div id="photostory" class="pstory"></div>
+
 
 <!-- ЧТО РАЗВИЛИ -->
 <section class="sec"><div class="container">
@@ -287,26 +282,7 @@ document.getElementById('res').innerHTML=results.map((r,i)=>`<div class="rescard
   <div class="statnum">${i===1?'350':'100%'}</div>
   <p style="margin:14px 0 0;color:#d6d8db;font-size:20px">${r}</p></div>`).join('');
 
-/* ФОТО-СТОРИ: 12 фото Формулы на весь экран с подписями */
-const photos=[
- {img:'img/f1p-p01.jpg',cap:'Материалы, чертежи и старт подготовки'},
- {img:'img/f1p-p02.jpg',cap:'Сборка болида из картона прямо на трассе'},
- {img:'img/f1p-p03.jpg',cap:'Дизайн и роспись своими руками'},
- {img:'img/f1p-p04.jpg',cap:'Готовый болид у каждой команды'},
- {img:'img/f1p-p05.jpg',cap:'На стартовой линии'},
- {img:'img/f1p-p06.jpg',cap:'Технические круги на время'},
- {img:'img/f1p-p07.jpg',cap:'Драг-рейсинг: азарт и дым на трассе'},
- {img:'img/f1p-p08.jpg',cap:'Гонка на настоящей гоночной трассе'},
- {img:'img/f1p-p09.jpg',cap:'Борьба за каждый метр'},
- {img:'img/f1p-p10.jpg',cap:'Команды и их гоночные бренды'},
- {img:'img/f1p-p11.jpg',cap:'Чемпиона качают под клетчатым флагом'},
- {img:'img/f1p-p12.jpg',cap:'Десятки болидов на одной трассе'}
-];
-document.getElementById('photostory').innerHTML=photos.map((p,i)=>`<section class="pshot">
-  <img src="${p.img}" alt="">
-  <div class="pveil"></div>
-  <div class="pcap"><div class="container"><div class="pnum">${String(i+1).padStart(2,'0')} / ${photos.length}</div><div class="ptext">${p.cap}</div></div></div>
-</section>`).join('');
+
 </script>
 <script src="common.js"></script>
 </body></html>
